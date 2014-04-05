@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../LockCamera.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Actions.cs">
     <Files>
-      <File FileName="../../LockCamera.cs" Line="11" Column="3" />
-      <File FileName="Assets/Scripts/PlayerControl.cs" Line="62" Column="39" />
-      <File FileName="../../Actions.cs" Line="14" Column="3" />
+      <File FileName="../../LockCamera.cs" Line="12" Column="3" />
+      <File FileName="Assets/GUILayout.cs" Line="70" Column="37" />
+      <File FileName="Assets/Actions.cs" Line="27" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
