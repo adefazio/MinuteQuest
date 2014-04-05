@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e7bfe12519145a4bddee2537b61da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isJumping: 0
 --- !u!50 &611856688
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -328,6 +329,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 737060755}
+  - 114: {fileID: 737060756}
   m_Layer: 0
   m_Name: GUIObject
   m_TagString: Untagged
@@ -342,10 +344,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 737060754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.1617806, z: 0}
+  m_LocalPosition: {x: 0, y: -.131928205, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &737060756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737060754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37986cae73a2a44a0911435b8c0eb215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &754635025
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +596,7 @@ GameObject:
   - 61: {fileID: 1286146894}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -760,7 +773,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .448529422, g: .448529422, b: .448529422, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

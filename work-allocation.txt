@@ -1,0 +1,15 @@
+
+ - Weapon Generation
+ - Edwin
+
+ - Monster Generation
+  Mayank
+
+ - Leveling / XP etc.
+
+ - Skills, 
+
+ - HUD
+		Aaron
+
+ - Randomized level structure
