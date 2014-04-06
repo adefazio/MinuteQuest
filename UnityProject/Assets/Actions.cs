@@ -8,13 +8,21 @@ public class Actions : MonoBehaviour {
 	public float moveForce = 100000.0f;
 	public float maxVelocity = 10.0f;
 
+	private Animator anim;					// Reference to the player's animator component.
+	
+	
+	void Awake()
+	{
+		anim = GetComponent<Animator>();
+	}
+
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		var vel = rigidbody2D.velocity;
 		//Debug.Log ("Velocity: " + vel.magnitude);
@@ -49,7 +57,7 @@ public class Actions : MonoBehaviour {
 
 		var attackBtnDown = Input.GetButtonDown("Fire1");
 		if(attackBtnDown) {
-
+			anim.SetTrigger("Attack");
 		}
 
 	}

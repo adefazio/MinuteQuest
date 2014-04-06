@@ -53,7 +53,7 @@ TextureImporter:
         width: 137
         height: 230
       alignment: 9
-      pivot: {x: .211547181, y: .594715059}
+      pivot: {x: .218963012, y: .579254746}
     - name: StickFigureAttackWhoosh
       rect:
         serializedVersion: 2
@@ -62,7 +62,7 @@ TextureImporter:
         width: 134
         height: 230
       alignment: 9
-      pivot: {x: .217377186, y: .540656209}
+      pivot: {x: .223695412, y: .577466726}
     - name: StickFigureAttacked
       rect:
         serializedVersion: 2
