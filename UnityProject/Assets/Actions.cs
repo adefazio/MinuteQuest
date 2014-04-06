@@ -5,6 +5,8 @@ public class Actions : MonoBehaviour {
 
 	public bool isJumping = false;
 	public float jumpForce =  300000.0f;
+	public float moveForce = 100000.0f;
+	public float maxVelocity = 10.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -13,15 +15,26 @@ public class Actions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		var vel = rigidbody2D.velocity;
+		//Debug.Log ("Velocity: " + vel.magnitude);
+		if(vel.magnitude > maxVelocity){
+			rigidbody2D.velocity = maxVelocity*vel/vel.magnitude;
+		}
+
 		float h = Input.GetAxis("Horizontal");
 		
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		if (h > 0.0f) {
-			rigidbody2D.velocity = new Vector2(10.0f, 0.0f);
-		} else if (h < 0.0f) {
-			rigidbody2D.velocity = new Vector2(-10.0f, 0.0f);
-		} else {
-			rigidbody2D.velocity = new Vector2(0.0f, 0.0f);
+		if(vel.magnitude < maxVelocity) {
+			if (h > 0.0f) {
+				//Debug.Log ("Move right");
+				rigidbody2D.AddForce(moveForce * Vector2.right);
+			} else if (h < 0.0f) {
+				//Debug.Log ("Move left");
+				rigidbody2D.AddForce(-moveForce * Vector2.right);
+			} else {
+				rigidbody2D.velocity = Vector2.zero;
+			}
 		}
 
 		/////////////////////////////////////
@@ -33,6 +46,9 @@ public class Actions : MonoBehaviour {
 			isJumping = true;
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 		}
+
+		
+
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
