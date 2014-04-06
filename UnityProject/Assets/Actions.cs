@@ -47,7 +47,10 @@ public class Actions : MonoBehaviour {
 			rigidbody2D.AddForce(Vector2.up * jumpForce);
 		}
 
-		
+		var attackBtnDown = Input.GetButtonDown("Fire1");
+		if(attackBtnDown) {
+
+		}
 
 	}
 
