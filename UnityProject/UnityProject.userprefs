@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Actions.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BlobController.cs">
     <Files>
-      <File FileName="../../LockCamera.cs" Line="12" Column="3" />
-      <File FileName="Assets/GUILayout.cs" Line="70" Column="37" />
-      <File FileName="Assets/Actions.cs" Line="27" Column="6" />
+      <File FileName="Assets\BlobController.cs" Line="16" Column="2" />
+      <File FileName="Assets\GUILayout.cs" Line="1" Column="1" />
+      <File FileName="Assets\Actions.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
