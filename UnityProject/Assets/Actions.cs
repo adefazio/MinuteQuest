@@ -4,9 +4,10 @@ using System.Collections;
 public class Actions : MonoBehaviour {
 
 	public bool isJumping = false;
-	public float jumpForce =  300000.0f;
-	public float moveForce = 100000.0f;
-	public float maxVelocity = 10.0f;
+	public bool isFacingRight = true;
+	private float jumpForce =  300000.0f;
+	private float moveForce = 1000000.0f;
+	private float maxVelocity = 10.0f;
 
 	private Animator anim;					// Reference to the player's animator component.
 	
@@ -36,10 +37,24 @@ public class Actions : MonoBehaviour {
 		if(vel.magnitude < maxVelocity) {
 			if (h > 0.0f) {
 				//Debug.Log ("Move right");
-				rigidbody2D.AddForce(moveForce * Vector2.right);
+
+				if(isFacingRight) {
+					rigidbody2D.AddForce(Time.deltaTime*moveForce * Vector2.right);
+				} else {
+					//Flip to facing right
+					transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+				}
+				isFacingRight = true;
 			} else if (h < 0.0f) {
+
 				//Debug.Log ("Move left");
-				rigidbody2D.AddForce(-moveForce * Vector2.right);
+				if(!isFacingRight) {
+					rigidbody2D.AddForce(-Time.deltaTime*moveForce * Vector2.right);
+				} else {
+					//Flip to facing left
+					transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+				}
+				isFacingRight = false;
 			} else {
 				rigidbody2D.velocity = Vector2.zero;
 			}

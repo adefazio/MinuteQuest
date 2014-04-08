@@ -316,9 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJumping: 0
-  jumpForce: 300000
-  moveForce: 100000
-  maxVelocity: 10
+  isFacingRight: 1
 --- !u!95 &608931526
 Animator:
   serializedVersion: 2
@@ -922,7 +920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 608931522}
-  cameraType: 0
 --- !u!1 &2010566076
 GameObject:
   m_ObjectHideFlags: 0
