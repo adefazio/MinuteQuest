@@ -14,8 +14,8 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
-  User Layer 9: 
+  User Layer 8: Walls
+  User Layer 9: SplashScreens
   User Layer 10: 
   User Layer 11: 
   User Layer 12: 
@@ -46,4 +46,8 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: SplashScreens
+    userID: 2
+    uniqueID: 2651025195
     locked: 0

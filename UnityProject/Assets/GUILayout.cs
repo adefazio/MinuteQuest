@@ -10,6 +10,10 @@ public class GUILayout : MonoBehaviour {
 
 	GUIStyle textFont;
 
+	private float splashScreenTime = 3.0f;
+	private float levelTime = 5*60.0f;
+	public Texture2D introSplashTexture;
+
 	private string[] weaponNames = {"Saber", "Ray Gun"};
 	private string[] spellNames = {"Fireball", "Disguise"};
 
@@ -29,17 +33,8 @@ public class GUILayout : MonoBehaviour {
 		textFont.normal.textColor = Color.white;
 	}
 
-	void OnGUI ()
+	void showGUI ()
 	{
-		setupFonts ();
-
-		// All measurements are in reference to a 1080p screen. 
-		//This resizes the units to be correct for other screen sizes.
-		//Debug.Log ("Screen width " + Screen.width + " height " + Screen.height);
-		Vector2 resizeRatio = new Vector2(((float)Screen.width)/1920.0f, 
-		                                  ((float)Screen.height/1080.0f));
-		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, 
-		                           new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
 
 		if(texture == null){
 			texture = new Texture2D(1, 1);
@@ -104,6 +99,29 @@ public class GUILayout : MonoBehaviour {
 
 		///////////////
 		/// Timer
-		GUI.Box(new Rect(halfW-156, 0, 312, 127), "5:00", textFont);
+		var ts = System.TimeSpan.FromSeconds(levelTime  - Time.time);
+		var timeStr = string.Format("{0}:{1}", ts.Minutes.ToString(), ts.Seconds.ToString());
+		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, textFont);
+	}
+
+	
+	void OnGUI() {
+		setupFonts ();
+		
+		// All measurements are in reference to a 1080p screen. 
+		//This resizes the units to be correct for other screen sizes.
+		//Debug.Log ("Screen width " + Screen.width + " height " + Screen.height);
+		Vector2 resizeRatio = new Vector2(((float)Screen.width)/1920.0f, 
+		                                  ((float)Screen.height/1080.0f));
+		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, 
+		                           new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
+
+		if (Time.realtimeSinceStartup > splashScreenTime) {
+			Time.timeScale = 1.0f;
+			showGUI ();
+		} else {
+			Time.timeScale = 0.0f;
+			GUI.DrawTexture(new Rect(0,0,1920,1080), introSplashTexture, ScaleMode.ScaleToFit, true, 0.0f);
+		}
 	}
 }

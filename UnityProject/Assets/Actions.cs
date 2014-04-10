@@ -84,9 +84,9 @@ public class Actions : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 
 		// Debug-draw all contact points and normals
-		foreach(ContactPoint2D contact in collision.contacts) {
+		//foreach(ContactPoint2D contact in collision.contacts) {
 			//Debug.DrawRay(contact.point, contact.normal, Color.white);
-		}
+		//}
 
 		Debug.Log("Hit Something");
 		

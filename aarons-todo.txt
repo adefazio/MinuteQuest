@@ -1,0 +1,8 @@
+
+ - Skin GUI
+ - Hook up mouse based movement
+ - Hook health bar and mana to player attributes
+ - Add Timer that counts down, with death at zero
+ - Add initial message screen.
+ - Change player hitbox to circle at bottom to allow ramp ingress.
+ - Fix attack to hit once only
