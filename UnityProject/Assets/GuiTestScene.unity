@@ -238,6 +238,7 @@ GameObject:
   - 61: {fileID: 608931523}
   - 95: {fileID: 608931526}
   - 58: {fileID: 608931527}
+  - 114: {fileID: 608931528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -344,6 +345,25 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .25
   m_Center: {x: .0299999993, y: -.769999981}
+--- !u!114 &608931528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 608931520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2229eb3b9b92b0641951477b14fb54fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  mana: 0
+  maxHealth: 0
+  maxMana: 0
+  level: 0
+  constitution: 10
+  strength: 10
+  energy: 10
 --- !u!1 &737060754
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37986cae73a2a44a0911435b8c0eb215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 608931520}
   introSplashTexture: {fileID: 2800000, guid: 278c351754f3981449442fc632177ef0, type: 3}
   failureTexture: {fileID: 2800000, guid: 175eba88acd71cd43b5f1eb8daa308a7, type: 3}
 --- !u!1 &910118251

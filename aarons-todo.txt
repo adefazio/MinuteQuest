@@ -1,3 +1,4 @@
 
  - Skin GUI
- - Hook health bar and mana to player attributes
+ - Detect enemies under player click location and attack them
+ - Add effect when player takes damage.

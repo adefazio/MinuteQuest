@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GUILayout : MonoBehaviour {
 
+	public GameObject player;
+
 	private GUIStyle style;
 	private Texture2D texture;
 	private int selectedWeapon = 0;
@@ -68,12 +70,13 @@ public class GUILayout : MonoBehaviour {
 
 		/////////////////////
 		/// Bars
+		var pAttrs = player.GetComponent<Attributes>();
 		var defaultColor = GUI.color;
 		GUI.BeginGroup(new Rect(halfW - 50, sheight - 300, 100, 300));
 		GUI.color = Color.red;
-		GUI.Box(new Rect(0,20,40,250), "", style);
+		GUI.Box(new Rect(0,270,40,-250*pAttrs.healthFraction), "", style);
 		GUI.color = Color.blue;
-		GUI.Box(new Rect(60,20,40,250), "", style);
+		GUI.Box(new Rect(60,270,40,-250*pAttrs.manaFraction), "", style);
 		GUI.color = defaultColor;
 
 		GUI.EndGroup();
