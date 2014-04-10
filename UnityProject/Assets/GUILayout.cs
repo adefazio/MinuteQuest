@@ -10,9 +10,10 @@ public class GUILayout : MonoBehaviour {
 
 	GUIStyle textFont;
 
-	private float splashScreenTime = 3.0f;
+	private float splashScreenTime = 0.5f;
 	private float levelTime = 5*60.0f;
 	public Texture2D introSplashTexture;
+	public Texture2D failureTexture;
 
 	private string[] weaponNames = {"Saber", "Ray Gun"};
 	private string[] spellNames = {"Fireball", "Disguise"};
@@ -93,8 +94,8 @@ public class GUILayout : MonoBehaviour {
 		GUI.BeginGroup(new Rect(halfW + 60, sheight-300, areaWidth, 300));
 		GUI.Box(new Rect(20, 20, areaWidth-20, 250), "");
 		
-		selectedWeapon = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, 250), 
-		                                   selectedSpell, spellNames, 2, textFont);
+		selectedSpell = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, 250), 
+		                                  selectedSpell, spellNames, 2, textFont);
 		GUI.EndGroup();
 
 		///////////////
@@ -116,12 +117,21 @@ public class GUILayout : MonoBehaviour {
 		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, 
 		                           new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
 
-		if (Time.realtimeSinceStartup > splashScreenTime) {
-			Time.timeScale = 1.0f;
-			showGUI ();
-		} else {
+		if (Time.time > levelTime) {
 			Time.timeScale = 0.0f;
-			GUI.DrawTexture(new Rect(0,0,1920,1080), introSplashTexture, ScaleMode.ScaleToFit, true, 0.0f);
+			GUI.DrawTexture(new Rect(0,0,1920,1080), failureTexture, ScaleMode.ScaleToFit, true, 0.0f);
+			// Additional code for restarting the game, going to the menu screen, saving loot etc.
+			// goes here.
+		} else {
+			if (Time.realtimeSinceStartup > splashScreenTime) {
+				Time.timeScale = 1.0f;
+				showGUI ();
+			} else {
+				Time.timeScale = 0.0f;
+				GUI.DrawTexture(new Rect(0,0,1920,1080), introSplashTexture, ScaleMode.ScaleToFit, true, 0.0f);
+			}
 		}
+
+
 	}
 }

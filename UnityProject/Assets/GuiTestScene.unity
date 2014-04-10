@@ -237,6 +237,7 @@ GameObject:
   - 50: {fileID: 608931524}
   - 61: {fileID: 608931523}
   - 95: {fileID: 608931526}
+  - 58: {fileID: 608931527}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -287,8 +288,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .469999999, y: 1.70000005}
-  m_Center: {x: 0, y: -.180000007}
+  m_Size: {x: .469999999, y: 1.37}
+  m_Center: {x: 0, y: .0700000003}
 --- !u!50 &608931524
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ Rigidbody2D:
   m_Mass: 80
   m_LinearDrag: 8
   m_AngularDrag: .0500000007
-  m_GravityScale: 10
+  m_GravityScale: 3
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e7bfe12519145a4bddee2537b61da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1922977957}
   isJumping: 0
   isFacingRight: 1
 --- !u!95 &608931526
@@ -331,6 +333,17 @@ Animator:
   m_ApplyRootMotion: 0
   m_AnimatePhysics: 1
   m_HasTransformHierarchy: 1
+--- !u!58 &608931527
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 608931520}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .25
+  m_Center: {x: .0299999993, y: -.769999981}
 --- !u!1 &737060754
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introSplashTexture: {fileID: 2800000, guid: 278c351754f3981449442fc632177ef0, type: 3}
+  failureTexture: {fileID: 2800000, guid: 175eba88acd71cd43b5f1eb8daa308a7, type: 3}
 --- !u!1 &910118251
 GameObject:
   m_ObjectHideFlags: 0
