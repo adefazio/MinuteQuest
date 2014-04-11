@@ -504,7 +504,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 6f03e993781f44d3c9d03f32599037ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cde8c41cf534e6e40a48246eacdd669e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &608931522
 Transform:
@@ -513,7 +513,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 608931520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00999999978, y: -.939111054, z: 0}
+  m_LocalPosition: {x: -.287310183, y: -1.01834261, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -554,10 +554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e7bfe12519145a4bddee2537b61da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   isJumping: 0
-  jumpForce: 300000
-  moveForce: 100000
-  maxVelocity: 10
+  isFacingRight: 1
 --- !u!95 &608931526
 Animator:
   serializedVersion: 2
@@ -610,6 +609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37986cae73a2a44a0911435b8c0eb215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  introSplashTexture: {fileID: 0}
+  failureTexture: {fileID: 0}
 --- !u!1 &754635025
 GameObject:
   m_ObjectHideFlags: 0
