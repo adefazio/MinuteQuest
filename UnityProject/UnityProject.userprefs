@@ -1,10 +1,18 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Actions.cs">
     <Files>
       <File FileName="Assets\GUILayout.cs" Line="17" Column="2" />
       <File FileName="Assets\LockCamera.cs" Line="28" Column="76" />
       <File FileName="Assets\Actions.cs" Line="96" Column="27" />
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CreateLevel.cs">
+    <Files>
+      <File FileName="Assets\CreateLevel.cs" Line="24" Column="87" />
+      <File FileName="Assets\CreateFlatSection.cs" Line="14" Column="21" />
+>>>>>>> origin/GeoffsStuff
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
