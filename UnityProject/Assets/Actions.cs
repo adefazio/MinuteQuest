@@ -9,12 +9,15 @@ public class Actions : MonoBehaviour {
 	private float jumpForce =  80000.0f;
 	private float moveVelocity = 6.0f;
 	private float bottomBarScreenFraction = 0.278f;
+	private float howCloseToMonsterToMove = 1.0f;
 
 	private Animator anim;					// Reference to the player's animator component.
 
 	private bool movingToClick = false;
 	private float playerMovementTarget = 0.0f;
-
+	
+	private bool attackingMonster = false;
+	private Collider2D monsterTarget = null;
 	
 	void Awake()
 	{
@@ -73,8 +76,7 @@ public class Actions : MonoBehaviour {
 		var attackBtnDown = Input.GetButtonDown("Fire1");
 		if(attackBtnDown) {
 			//!anim.GetCurrentAnimatorStateInfo(0).IsName("AttackAnimation")
-			anim.SetTrigger("Attack");
-			Debug.Log ("Attack pressed");
+			triggerAttack();
 		}
 
 		///////////////////////////////////////
@@ -88,26 +90,58 @@ public class Actions : MonoBehaviour {
 				mousePos.z = 0.0f; // select distance = 10 units from the camera
 				var clickPos = mainCamera.ScreenToWorldPoint(mousePos);
 				Debug.Log(clickPos);
-				movingToClick = true;
-				playerMovementTarget = clickPos.x;
 
-				if (playerMovementTarget - transform.position.x > 0) { 		
-					transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-					isFacingRight = true;
-				} else {
-					transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-					isFacingRight = false;
+				Collider2D[] col = Physics2D.OverlapPointAll(clickPos);
+
+				var monsterClicked = false;
+				foreach(Collider2D c in col) {
+					if(c.gameObject.tag == "Enemy") {
+						monsterClicked = true;
+						attackingMonster = true;
+						monsterTarget = c;
+					}
+				}
+
+				if(!monsterClicked) {
+					movingToClick = true;
+					playerMovementTarget = clickPos.x;
+
+					if (playerMovementTarget - transform.position.x > 0) { 		
+						transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+						isFacingRight = true;
+					} else {
+						transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+						isFacingRight = false;
+					}
 				}
 			}
 		}
 
+		if(attackingMonster) {
+			Debug.Log ("Monster");
+			Debug.Log (monsterTarget);
+			Vector3 monsterpoint = monsterTarget.transform.position;
+			var directionToPlayer = Mathf.Sign (transform.position.x - monsterpoint.x);
+			Debug.Log("direction to Player: " + directionToPlayer);
+			Debug.Log("playerMovementTarget: " + playerMovementTarget);
+			playerMovementTarget = monsterpoint.x + directionToPlayer*howCloseToMonsterToMove;
+			Debug.Log("player location: " + transform.position.x);
+			Debug.Log ("monsterpoint: " + monsterpoint.x);
+			//monsterpoint.x = playerMovementTarget;
+			//Debug.DrawRay(monsterpoint, Vector3.up);
+		}
 
-		if(movingToClick) {
+		if(movingToClick || attackingMonster) {
 			var pos = transform.position;
 			var posDelta = playerMovementTarget - pos.x;
 			if(Mathf.Abs(posDelta) < Time.deltaTime*moveVelocity) {
 				pos.x = playerMovementTarget;
 				movingToClick = false;
+				if(attackingMonster) {
+					attackingMonster = false;
+					triggerAttack();
+				}
+
 			} else {
 				pos += Mathf.Sign(posDelta)*(Time.deltaTime*moveVelocity * Vector3.right);
 			}
@@ -127,11 +161,34 @@ public class Actions : MonoBehaviour {
 			//Debug.DrawRay(contact.point, contact.normal, Color.white);
 		//}
 
-		Debug.Log("Hit Something");
+		//Debug.Log("Hit Something");
 		
-		if(collision.gameObject.tag == "floor") {
+		if(isJumping && collision.gameObject.tag == "floor") {
 			isJumping = false;
 			Debug.Log("Hit floor");
 		}
 	}
+
+	void triggerAttack(){
+		anim.SetTrigger("Attack");
+		Debug.Log ("Attack");
+
+		takeDamage(13);
+	}
+
+	public void takeDamage(float damage) {
+		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/Text/HealthLost.prefab", typeof(GameObject));
+		
+		var healthLoss = Instantiate(prefab,
+		                             transform.position + Vector3.up,
+		                             Quaternion.identity) as GameObject;
+		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
+		Debug.Log("heathLoss: " + hlbehavior);
+		hlbehavior.contents = damage.ToString();
+
+		var attrs = GetComponent<Attributes>();
+		attrs.health -= damage;
+	}
+	
 }

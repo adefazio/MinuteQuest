@@ -1,4 +1,4 @@
 
  - Skin GUI
- - Detect enemies under player click location and attack them
  - Add effect when player takes damage.
+ - Add damage effect.
