@@ -5,12 +5,13 @@ public class GUILayout : MonoBehaviour {
 
 	private GameObject player;
 
-	private GUIStyle style;
-	private Texture2D texture;
+	private GUIStyle whiteStyle;
 	private int selectedWeapon = 0;
 	private int selectedSpell = 0;
 
-	GUIStyle textFont;
+	GUIStyle bigTextFont;
+	GUIStyle smallTextFont;
+	private Color xpBarColor;
 
 	private float splashScreenTime = 0.5f;
 	private float levelTime = 5*60.0f;
@@ -22,36 +23,47 @@ public class GUILayout : MonoBehaviour {
 
 	private int halfW = 1920/2;
 	//private int halfH = 1080/2;
-	//private int swidth = 1920;
+	private int swidth = 1920;
 	private int sheight = 1080;
+	private GUIStyle blackStyle;
+
+	private int buttonHeight = 200;
+
+	private Texture2D colorTexture(Color c) {
+		var texture = new Texture2D(1, 1);
+		texture.SetPixel(1, 1, c);
+		texture.Apply();
+		return texture;
+	}
 
 	public void Start() {
+
+		whiteStyle = new GUIStyle();
+		whiteStyle.normal.background = colorTexture(Color.white);
+
 		player = GameObject.FindGameObjectWithTag("Player");
+
+		blackStyle = new GUIStyle();
+		blackStyle.normal.background = colorTexture(Color.black);
+
+		xpBarColor = Color.green;
+		xpBarColor.a = 0.3f;
 	}
 
 	void setupFonts() {
-		textFont = new GUIStyle(GUI.skin.button);
-		textFont.fontSize = 90;
-		textFont.alignment = TextAnchor.MiddleCenter;
-		textFont.normal.textColor = Color.white;
+		bigTextFont = new GUIStyle(GUI.skin.button);
+		bigTextFont.fontSize = 90;
+		bigTextFont.alignment = TextAnchor.MiddleCenter;
+		bigTextFont.normal.textColor = Color.white;
+
+		smallTextFont = new GUIStyle(bigTextFont);
+		smallTextFont.fontSize = 30;
 	}
 
 	void showGUI ()
 	{
-
-		if(texture == null){
-			texture = new Texture2D(1, 1);
-		}
-		if(style == null){
-			style = new GUIStyle();
-		}
-
-		texture.SetPixel(1, 1, Color.white);
-		texture.Apply();
-		
-		style.normal.background = texture;
-
-
+		var defaultColor = GUI.color;
+		var pAttrs = player.GetComponent<Attributes>();
 		// Menu box
 		/* Hide for now
 		GUI.BeginGroup(new Rect(10,10,90,70));
@@ -66,17 +78,43 @@ public class GUILayout : MonoBehaviour {
 		GUI.EndGroup();
 		*/
 
+		///////////////
+		/// Timer
+		var ts = System.TimeSpan.FromSeconds(levelTime  - Time.time);
+		var timeStr = string.Format("{0}:{1}", ts.Minutes.ToString(), ts.Seconds.ToString());
+		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, bigTextFont);
 
+
+		// Bottom bar group
+		GUI.BeginGroup(new Rect(0, sheight - 300, swidth, 300));
+
+		///////////////
+		/// XP Bar
+		GUI.BeginGroup(new Rect(20, 10, swidth-40, 50));
+		GUI.Box(new Rect(0, 0, swidth-20, 50), "", blackStyle);
+		GUI.color = xpBarColor;
+		//Debug.Log ("XP Fraction: " + pAttrs.xpLevelFraction);
+		//Debug.Log ("XP: " + pAttrs.xp + " to next level: " + pAttrs.xpToNextLevel());
+		var xpWidth = (swidth-60)*pAttrs.xpLevelFraction;
+		GUI.Box(new Rect(5, 5, 10, 40), "", whiteStyle);
+		GUI.Box(new Rect(15, 5, xpWidth, 40), "", whiteStyle);
+
+		GUI.color = defaultColor;
+		var xpText = "Lvl " + pAttrs.level + "     XP " + pAttrs.xp;
+		GUI.Label(new Rect(5, 5, swidth-40, 40), xpText, smallTextFont);
+		GUI.EndGroup();
+
+		// Rest of bottom bar
+		GUI.BeginGroup(new Rect(0, 50, swidth, 250));
 
 		/////////////////////
-		/// Bars
-		var pAttrs = player.GetComponent<Attributes>();
-		var defaultColor = GUI.color;
-		GUI.BeginGroup(new Rect(halfW - 50, sheight - 300, 100, 300));
+		/// Health and mana bars
+		GUI.BeginGroup(new Rect(halfW - 50, 20, 100, buttonHeight));
 		GUI.color = Color.red;
-		GUI.Box(new Rect(0,270,40,-250*pAttrs.healthFraction), "", style);
+		//Debug.Log("health " + pAttrs.healthFraction);
+		GUI.Box(new Rect(0,buttonHeight,40,-buttonHeight*pAttrs.healthFraction), "", whiteStyle);
 		GUI.color = Color.blue;
-		GUI.Box(new Rect(60,270,40,-250*pAttrs.manaFraction), "", style);
+		GUI.Box(new Rect(60,buttonHeight,40,-buttonHeight*pAttrs.manaFraction), "", whiteStyle);
 		GUI.color = defaultColor;
 
 		GUI.EndGroup();
@@ -84,28 +122,26 @@ public class GUILayout : MonoBehaviour {
 		//////////////////
 		/// Select weapon
 		var areaWidth = halfW-100;
-		GUI.BeginGroup(new Rect(20, sheight-300, areaWidth, 300));
-		GUI.Box(new Rect(20, 20, areaWidth-20, 250), "");
+		GUI.BeginGroup(new Rect(20, 0, areaWidth, 300));
+		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "");
 		
-		selectedWeapon = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, 250), 
-		                                   selectedWeapon, weaponNames, 2, textFont);
+		selectedWeapon = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, buttonHeight), 
+		                                   selectedWeapon, weaponNames, 2, bigTextFont);
 		GUI.EndGroup();
 
 		/////////////////
 		/// Select spell
 
-		GUI.BeginGroup(new Rect(halfW + 60, sheight-300, areaWidth, 300));
-		GUI.Box(new Rect(20, 20, areaWidth-20, 250), "");
+		GUI.BeginGroup(new Rect(halfW + 60, 0, areaWidth, 300));
+		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "");
 		
-		selectedSpell = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, 250), 
-		                                  selectedSpell, spellNames, 2, textFont);
+		selectedSpell = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, buttonHeight), 
+		                                  selectedSpell, spellNames, 2, bigTextFont);
 		GUI.EndGroup();
 
-		///////////////
-		/// Timer
-		var ts = System.TimeSpan.FromSeconds(levelTime  - Time.time);
-		var timeStr = string.Format("{0}:{1}", ts.Minutes.ToString(), ts.Seconds.ToString());
-		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, textFont);
+		GUI.EndGroup();
+		GUI.EndGroup();
+
 	}
 
 	
@@ -114,7 +150,6 @@ public class GUILayout : MonoBehaviour {
 		
 		// All measurements are in reference to a 1080p screen. 
 		//This resizes the units to be correct for other screen sizes.
-		//Debug.Log ("Screen width " + Screen.width + " height " + Screen.height);
 		Vector2 resizeRatio = new Vector2(((float)Screen.width)/1920.0f, 
 		                                  ((float)Screen.height/1080.0f));
 		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, 

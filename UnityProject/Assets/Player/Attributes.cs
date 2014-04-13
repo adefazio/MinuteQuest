@@ -41,8 +41,18 @@ public class Attributes : MonoBehaviour {
 		get { return mana/maxMana; }
 	}
 
+	public float xpLevelFraction {
+		get { 
+			var lvlXpRange = (float)(xpForLevel(level+1) - xpForLevel(level));
+			return (xp - xpForLevel(level))/lvlXpRange; }
+	}
+
+	public int xpForLevel(int lvl) {
+		return lvl*100;
+	}
+
 	public int xpToNextLevel() {
-		return level*100 - xp;
+		return xpForLevel(level+1) - xp;
 	}
 
 	
@@ -70,7 +80,7 @@ public class Attributes : MonoBehaviour {
 
 	public void giveXP(int xpAdded) {
 		xp += xpAdded;
-		while(xpToNextLevel() < 0) {
+		while(xpToNextLevel() <= 0) {
 			levelUp();
 
 		}

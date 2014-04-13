@@ -17,8 +17,11 @@ public class LevelUpMessageScript : MonoBehaviour {
 		var sizeMultipler = 1 + Time.time - startTime;
 		textFont.fontSize = (int)(90.0f*sizeMultipler);
 		textFont.alignment = TextAnchor.MiddleCenter;
-		textFont.normal.textColor = Color.blue;
+		var c = Color.blue;
+		c.a = 0.7f;
+		textFont.normal.textColor = c;
 	}
+
 	// Use this for initialization
 	void Start () {
 		startTime = Time.time;
