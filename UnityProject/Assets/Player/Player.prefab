@@ -112,14 +112,11 @@ MonoBehaviour:
   mana: 0
   maxHealth: 0
   maxMana: 0
-  level: 0
+  level: 1
   xp: 0
   constitution: 10
   strength: 10
   energy: 10
-  attrPerLevel: 3
-  healthPerConst: 10
-  manaPerEnergy: 10
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,4 +1,4 @@
 
  - Skin GUI
- - Add effect when player takes damage.
- - Add damage effect.
+ - Add fireball
+ - Add cloak

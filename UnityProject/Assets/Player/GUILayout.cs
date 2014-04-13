@@ -16,9 +16,11 @@ public class GUILayout : MonoBehaviour {
 
 	private float splashScreenTime = 0.5f;
 	private float levelTime = 5*60.0f;
+	private float startTime = 0.0f;
 	public Texture2D introSplashTexture;
 	public Texture2D failureTexture;
-	public Texture2D alpha0;
+	public Texture2D deathSplashTexture;
+	private Texture2D alpha0;
 
 	private string[] weaponNames = {"Saber", "Ray Gun"};
 	private string[] spellNames = {"Fireball", "Disguise"};
@@ -39,6 +41,9 @@ public class GUILayout : MonoBehaviour {
 	}
 
 	public void Start() {
+
+		startTime = Time.time;
+		Debug.Log ("start time: " + startTime);
 
 		whiteStyle = new GUIStyle();
 		whiteStyle.normal.background = colorTexture(Color.white);
@@ -88,7 +93,7 @@ public class GUILayout : MonoBehaviour {
 
 		///////////////
 		/// Timer
-		var ts = System.TimeSpan.FromSeconds(levelTime  - Time.time);
+		var ts = System.TimeSpan.FromSeconds(levelTime - Time.time + startTime);
 		var timeStr = string.Format("{0}:{1}", ts.Minutes.ToString(), ts.Seconds.ToString());
 		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, bigTextFont);
 
@@ -137,10 +142,10 @@ public class GUILayout : MonoBehaviour {
 
 		// Mana Text
 		GUI.Label(new Rect(65, 70, 60, 30), 
-		          ((int)pAttrs.health).ToString(), smallestTextFont);
+		          ((int)pAttrs.mana).ToString(), smallestTextFont);
 		GUI.Box(new Rect(75,100,50,2), "", whiteStyle);
 		GUI.Label(new Rect(65, 110, 60, 30), 
-		          ((int)pAttrs.maxHealth).ToString(), smallestTextFont);
+		          ((int)pAttrs.maxMana).ToString(), smallestTextFont);
 
 		GUI.EndGroup();
 		GUI.EndGroup();
@@ -170,6 +175,9 @@ public class GUILayout : MonoBehaviour {
 
 	}
 
+	void resetGame() {
+		Application.LoadLevel(0);
+	}
 	
 	void OnGUI() {
 		setupFonts ();
@@ -181,7 +189,14 @@ public class GUILayout : MonoBehaviour {
 		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, 
 		                           new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
 
-		if (Time.time > levelTime) {
+		var pAttrs = player.GetComponent<Attributes>();
+		if(pAttrs.health <= 0){
+			GUI.DrawTexture(new Rect(0,0,1920,1080), deathSplashTexture, ScaleMode.ScaleToFit, true, 0.0f);
+			Invoke("resetGame", 5.0f);
+			return;
+		}
+
+		if (Time.time > levelTime + startTime) {
 			Time.timeScale = 0.0f;
 			GUI.DrawTexture(new Rect(0,0,1920,1080), failureTexture, ScaleMode.ScaleToFit, true, 0.0f);
 			// Additional code for restarting the game, going to the menu screen, saving loot etc.
