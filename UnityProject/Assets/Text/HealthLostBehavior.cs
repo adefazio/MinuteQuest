@@ -13,7 +13,7 @@ public class HealthLostBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startingLocation = transform.position;
-		var text = GetComponent<TextMesh>();
+		//var text = GetComponent<TextMesh>();
 	}
 	
 	// Update is called once per frame

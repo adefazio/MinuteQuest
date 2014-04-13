@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GUILayout : MonoBehaviour {
 
-	public GameObject player;
+	private GameObject player;
 
 	private GUIStyle style;
 	private Texture2D texture;
@@ -21,12 +21,12 @@ public class GUILayout : MonoBehaviour {
 	private string[] spellNames = {"Fireball", "Disguise"};
 
 	private int halfW = 1920/2;
-	private int halfH = 1080/2;
-	private int swidth = 1920;
+	//private int halfH = 1080/2;
+	//private int swidth = 1920;
 	private int sheight = 1080;
 
 	public void Start() {
-
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	void setupFonts() {

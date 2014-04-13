@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Actions : MonoBehaviour {
 
-	public Camera mainCamera;
+	private Camera mainCamera;
 	public bool isJumping = false;
 	public bool isFacingRight = true;
 	private float jumpForce =  80000.0f;
@@ -26,7 +26,7 @@ public class Actions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		mainCamera = GameObject.FindObjectOfType<Camera>();
 	}
 	
 	// Update is called once per frame
@@ -173,22 +173,9 @@ public class Actions : MonoBehaviour {
 		anim.SetTrigger("Attack");
 		Debug.Log ("Attack");
 
-		takeDamage(13);
-	}
-
-	public void takeDamage(float damage) {
-		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Text/HealthLost.prefab", typeof(GameObject));
-		
-		var healthLoss = Instantiate(prefab,
-		                             transform.position + Vector3.up,
-		                             Quaternion.identity) as GameObject;
-		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
-		Debug.Log("heathLoss: " + hlbehavior);
-		hlbehavior.contents = damage.ToString();
-
 		var attrs = GetComponent<Attributes>();
-		attrs.health -= damage;
+		attrs.takeDamage(13);
 	}
+
 	
 }
