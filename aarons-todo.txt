@@ -2,4 +2,3 @@
  - Skin GUI
  - Add cloak
  - Animate blob's sprite during movement.
- - Add IDamage to blobs, with animation.
