@@ -9,16 +9,21 @@ public class Attributes : MonoBehaviour {
 	public float maxHealth;
 	public float maxMana;
 
+	[HideInInspector]
 	public int level = 1;
+	[HideInInspector]
 	public int xp = 0;
 
+	[HideInInspector]
 	public int constitution = 10;
+	[HideInInspector]
 	public int strength = 10;
+	[HideInInspector]
 	public int energy = 10;
 
-	public int attrPerLevel = 3;
-	public float healthPerConst = 10.0f;
-	public float manaPerEnergy = 10.0f;
+	private int attrPerLevel = 3;
+	private float healthPerConst = 10.0f;
+	private float manaPerEnergy = 10.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +53,7 @@ public class Attributes : MonoBehaviour {
 	}
 
 	public int xpForLevel(int lvl) {
-		return lvl*100;
+		return (lvl-1)*100;
 	}
 
 	public int xpToNextLevel() {

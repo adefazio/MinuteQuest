@@ -176,7 +176,7 @@ public class Actions : MonoBehaviour {
 		var attrs = GetComponent<Attributes>();
 		//attrs.takeDamage(13);
 
-		attrs.giveXP(50);
+		attrs.giveXP(27);
 	}
 
 	

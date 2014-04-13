@@ -11,12 +11,14 @@ public class GUILayout : MonoBehaviour {
 
 	GUIStyle bigTextFont;
 	GUIStyle smallTextFont;
+	GUIStyle smallestTextFont;
 	private Color xpBarColor;
 
 	private float splashScreenTime = 0.5f;
 	private float levelTime = 5*60.0f;
 	public Texture2D introSplashTexture;
 	public Texture2D failureTexture;
+	public Texture2D alpha0;
 
 	private string[] weaponNames = {"Saber", "Ray Gun"};
 	private string[] spellNames = {"Fireball", "Disguise"};
@@ -46,6 +48,8 @@ public class GUILayout : MonoBehaviour {
 		blackStyle = new GUIStyle();
 		blackStyle.normal.background = colorTexture(Color.black);
 
+		alpha0 = colorTexture(Color.clear);
+
 		xpBarColor = Color.green;
 		xpBarColor.a = 0.3f;
 	}
@@ -58,6 +62,10 @@ public class GUILayout : MonoBehaviour {
 
 		smallTextFont = new GUIStyle(bigTextFont);
 		smallTextFont.fontSize = 30;
+		smallTextFont.normal.background = alpha0;
+
+		smallestTextFont = new GUIStyle(smallTextFont);
+		smallestTextFont.fontSize = 24;
 	}
 
 	void showGUI ()
@@ -100,6 +108,7 @@ public class GUILayout : MonoBehaviour {
 		GUI.Box(new Rect(15, 5, xpWidth, 40), "", whiteStyle);
 
 		GUI.color = defaultColor;
+		//Debug.Log ("level " + pAttrs.level); 
 		var xpText = "Lvl " + pAttrs.level + "     XP " + pAttrs.xp;
 		GUI.Label(new Rect(5, 5, swidth-40, 40), xpText, smallTextFont);
 		GUI.EndGroup();
@@ -109,14 +118,31 @@ public class GUILayout : MonoBehaviour {
 
 		/////////////////////
 		/// Health and mana bars
-		GUI.BeginGroup(new Rect(halfW - 50, 20, 100, buttonHeight));
+		GUI.BeginGroup(new Rect(halfW - 67, 18, 134, buttonHeight+4), "", blackStyle);
+		GUI.BeginGroup(new Rect(2, 2, 130, buttonHeight));
 		GUI.color = Color.red;
 		//Debug.Log("health " + pAttrs.healthFraction);
-		GUI.Box(new Rect(0,buttonHeight,40,-buttonHeight*pAttrs.healthFraction), "", whiteStyle);
+
+		GUI.Box(new Rect(0,buttonHeight,60,-buttonHeight*pAttrs.healthFraction), "", whiteStyle);
 		GUI.color = Color.blue;
-		GUI.Box(new Rect(60,buttonHeight,40,-buttonHeight*pAttrs.manaFraction), "", whiteStyle);
+		GUI.Box(new Rect(70,buttonHeight,60,-buttonHeight*pAttrs.manaFraction), "", whiteStyle);
 		GUI.color = defaultColor;
 
+		// Health text
+		GUI.Label(new Rect(0, 70, 60, 30), 
+		          ((int)pAttrs.health).ToString(), smallestTextFont);
+		GUI.Box(new Rect(5,100,50,2), "", whiteStyle);
+		GUI.Label(new Rect(0, 110, 60, 30), 
+		          ((int)pAttrs.maxHealth).ToString(), smallestTextFont);
+
+		// Mana Text
+		GUI.Label(new Rect(65, 70, 60, 30), 
+		          ((int)pAttrs.health).ToString(), smallestTextFont);
+		GUI.Box(new Rect(75,100,50,2), "", whiteStyle);
+		GUI.Label(new Rect(65, 110, 60, 30), 
+		          ((int)pAttrs.maxHealth).ToString(), smallestTextFont);
+
+		GUI.EndGroup();
 		GUI.EndGroup();
 
 		//////////////////
