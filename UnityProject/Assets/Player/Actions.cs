@@ -174,7 +174,9 @@ public class Actions : MonoBehaviour {
 		Debug.Log ("Attack");
 
 		var attrs = GetComponent<Attributes>();
-		attrs.takeDamage(13);
+		//attrs.takeDamage(13);
+
+		attrs.giveXP(50);
 	}
 
 	

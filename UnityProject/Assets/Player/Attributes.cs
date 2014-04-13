@@ -9,17 +9,21 @@ public class Attributes : MonoBehaviour {
 	public float maxHealth;
 	public float maxMana;
 
-	public int level;
-	public int xp;
+	public int level = 1;
+	public int xp = 0;
 
 	public int constitution = 10;
 	public int strength = 10;
 	public int energy = 10;
 
+	public int attrPerLevel = 3;
+	public float healthPerConst = 10.0f;
+	public float manaPerEnergy = 10.0f;
+
 	// Use this for initialization
 	void Start () {
-		maxHealth = constitution*10.0f;
-		maxMana = energy*10.0f;
+		maxHealth = constitution*healthPerConst;
+		maxMana = energy*manaPerEnergy;
 
 		health = maxHealth;
 		mana = maxMana;
@@ -41,11 +45,34 @@ public class Attributes : MonoBehaviour {
 		return level*100 - xp;
 	}
 
+	
+	private void levelUp(){
+		level += 1;
+		
+		strength += attrPerLevel;
+		constitution += attrPerLevel;
+		energy += attrPerLevel;
+		
+		maxHealth = constitution*healthPerConst;
+		maxMana = energy*manaPerEnergy;
+		
+		// Most games reset your health to full
+		// when you level up.
+		health = maxHealth;
+		mana = maxMana;
+
+		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/Text/LevelUpMessage.prefab", typeof(GameObject));
+		
+		Instantiate(prefab, transform.position, Quaternion.identity);
+
+	}
+
 	public void giveXP(int xpAdded) {
 		xp += xpAdded;
 		while(xpToNextLevel() < 0) {
-			level += 1;
-			// TODO: Level up overlay.
+			levelUp();
+
 		}
 	}
 	
