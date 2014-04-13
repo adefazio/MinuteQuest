@@ -123,9 +123,11 @@ public class GUILayout : MonoBehaviour {
 
 		/////////////////////
 		/// Health and mana bars
-		GUI.BeginGroup(new Rect(halfW - 67, 18, 134, buttonHeight+4), "", blackStyle);
+		GUI.BeginGroup(new Rect(halfW - 67, 18, 134, buttonHeight+4));
+		GUI.Box(new Rect(0, 0, 64, buttonHeight+4), "", blackStyle);
+		GUI.Box(new Rect(134, 0, -64, buttonHeight+4), "", blackStyle);
 		GUI.BeginGroup(new Rect(2, 2, 130, buttonHeight));
-		GUI.color = Color.red;
+        GUI.color = Color.red;
 		//Debug.Log("health " + pAttrs.healthFraction);
 
 		GUI.Box(new Rect(0,buttonHeight,60,-buttonHeight*pAttrs.healthFraction), "", whiteStyle);

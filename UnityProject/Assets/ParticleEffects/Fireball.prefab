@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 15: {fileID: 1500000}
   - 12: {fileID: 1200000}
   - 26: {fileID: 2600000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: InnerCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - 15: {fileID: 1500002}
   - 12: {fileID: 1200002}
   - 26: {fileID: 2600002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - 15: {fileID: 1500004}
   - 12: {fileID: 1200004}
   - 26: {fileID: 2600004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OuterCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.40137005, y: -.0173908472, z: 0}
+  m_LocalPosition: {x: .122553825, y: -.0173908472, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0961e779f667c9d4ca7b717994b96dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireballLvl: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -4,12 +4,15 @@ using System.Collections;
 public class Actions : MonoBehaviour {
 
 	private Camera mainCamera;
+	private Object fireballPrefab;
+	private Attributes attrs;
 	public bool isJumping = false;
 	public bool isFacingRight = true;
 	private float jumpForce =  80000.0f;
 	private float moveVelocity = 6.0f;
 	private float bottomBarScreenFraction = 0.278f;
 	private float howCloseToMonsterToMove = 1.0f;
+	private float fireballMana = 20.0f;
 
 	private Animator anim;					// Reference to the player's animator component.
 
@@ -27,6 +30,9 @@ public class Actions : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindObjectOfType<Camera>();
+		fireballPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/ParticleEffects/Fireball.prefab", typeof(GameObject));
+		attrs = GetComponent<Attributes>();
 	}
 	
 	// Update is called once per frame
@@ -81,9 +87,8 @@ public class Actions : MonoBehaviour {
 
 		///////////////////////////////////////
 		/// Mouse Controls
-
+		var mousePos = Input.mousePosition;
 		if(Input.GetMouseButtonDown(0)) {
-			var mousePos = Input.mousePosition;
 			// Bar 
 			if(mousePos.y > bottomBarScreenFraction*Screen.height) {
 				Debug.Log(mousePos);
@@ -114,6 +119,16 @@ public class Actions : MonoBehaviour {
 						isFacingRight = false;
 					}
 				}
+			}
+		}
+
+		if(Input.GetMouseButtonDown(1)) {
+			Debug.Log ("Mouse button 1 pressed");
+			if(attrs.mana >= fireballMana) {
+				attrs.mana -= fireballMana;
+				mousePos.z = 0.0f;
+				var clickPos = mainCamera.ScreenToWorldPoint(mousePos);
+				var fb = Instantiate(fireballPrefab, clickPos, Quaternion.identity) as GameObject;
 			}
 		}
 
@@ -172,8 +187,7 @@ public class Actions : MonoBehaviour {
 	void triggerAttack(){
 		anim.SetTrigger("Attack");
 		Debug.Log ("Attack");
-
-		var attrs = GetComponent<Attributes>();
+			
 		attrs.takeDamage(13);
 
 		//attrs.giveXP(27);

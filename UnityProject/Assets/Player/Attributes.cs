@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Attributes : MonoBehaviour {
+public class Attributes : MonoBehaviour, IDamagable {
 
 	public float health;
 	public float mana;
@@ -103,4 +103,5 @@ public class Attributes : MonoBehaviour {
 
 		health -= damage;
 	}
+
 }

@@ -1,4 +1,4 @@
 
  - Skin GUI
- - Add fireball
  - Add cloak
+ - Animate blob's sprite during movement.
