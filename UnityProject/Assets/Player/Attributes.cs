@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Attributes : MonoBehaviour, IDamagable {
+public class Attributes : Damagable {
 
-	public float health;
-	public float mana;
+	public int _health = 1;
+	public int mana;
 
-	public float maxHealth;
-	public float maxMana;
+	public int maxHealth;
+	public int maxMana;
 
 	[HideInInspector]
 	public int level = 1;
@@ -22,8 +22,13 @@ public class Attributes : MonoBehaviour, IDamagable {
 	public int energy = 10;
 
 	private int attrPerLevel = 3;
-	private float healthPerConst = 10.0f;
-	private float manaPerEnergy = 10.0f;
+	private int healthPerConst = 10;
+	private int manaPerEnergy = 10;
+
+	public override int health {
+		get { return _health; }
+		set { _health = value; }
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -40,10 +45,10 @@ public class Attributes : MonoBehaviour, IDamagable {
 	}
 
 	public float healthFraction { 
-		get { return health/maxHealth; }
+		get { return health/((float)maxHealth); }
 	}
 	public float manaFraction { 
-		get { return mana/maxMana; }
+		get { return mana/((float)maxMana); }
 	}
 
 	public float xpLevelFraction {
@@ -89,19 +94,6 @@ public class Attributes : MonoBehaviour, IDamagable {
 			levelUp();
 
 		}
-	}
-	
-	public void takeDamage(float damage) {
-		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Text/HealthLost.prefab", typeof(GameObject));
-		
-		var healthLoss = Instantiate(prefab,
-		                             transform.position + Vector3.up,
-		                             Quaternion.identity) as GameObject;
-		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
-		hlbehavior.contents = damage.ToString();
-
-		health -= damage;
 	}
 
 }

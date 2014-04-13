@@ -12,7 +12,7 @@ public class Actions : MonoBehaviour {
 	private float moveVelocity = 6.0f;
 	private float bottomBarScreenFraction = 0.278f;
 	private float howCloseToMonsterToMove = 1.0f;
-	private float fireballMana = 20.0f;
+	private int fireballMana = 20;
 
 	private Animator anim;					// Reference to the player's animator component.
 
@@ -188,7 +188,7 @@ public class Actions : MonoBehaviour {
 		anim.SetTrigger("Attack");
 		Debug.Log ("Attack");
 			
-		attrs.takeDamage(13);
+		//attrs.takeDamage(13);
 
 		//attrs.giveXP(27);
 	}

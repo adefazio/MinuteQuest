@@ -137,17 +137,17 @@ public class GUILayout : MonoBehaviour {
 
 		// Health text
 		GUI.Label(new Rect(0, 70, 60, 30), 
-		          ((int)pAttrs.health).ToString(), smallestTextFont);
+		          pAttrs.health.ToString(), smallestTextFont);
 		GUI.Box(new Rect(5,100,50,2), "", whiteStyle);
 		GUI.Label(new Rect(0, 110, 60, 30), 
-		          ((int)pAttrs.maxHealth).ToString(), smallestTextFont);
+		          pAttrs.maxHealth.ToString(), smallestTextFont);
 
 		// Mana Text
 		GUI.Label(new Rect(65, 70, 60, 30), 
-		          ((int)pAttrs.mana).ToString(), smallestTextFont);
+		          pAttrs.mana.ToString(), smallestTextFont);
 		GUI.Box(new Rect(75,100,50,2), "", whiteStyle);
 		GUI.Label(new Rect(65, 110, 60, 30), 
-		          ((int)pAttrs.maxMana).ToString(), smallestTextFont);
+		          pAttrs.maxMana.ToString(), smallestTextFont);
 
 		GUI.EndGroup();
 		GUI.EndGroup();
