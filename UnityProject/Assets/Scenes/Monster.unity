@@ -183,6 +183,10 @@ Prefab:
       propertyPath: attackAnimDist
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ccc4057d753e1ef4eb13497c7d025259, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ccc4057d753e1ef4eb13497c7d025259, type: 2}
@@ -304,6 +308,7 @@ GameObject:
   - 82: {fileID: 227129791}
   - 95: {fileID: 227129792}
   - 114: {fileID: 227129793}
+  - 114: {fileID: 227129794}
   m_Layer: 11
   m_Name: Blob
   m_TagString: Enemy
@@ -477,6 +482,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   worthXP: 50
+--- !u!114 &227129794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 227129785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a617f5e79537e74fa79c1781f2bbb23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gem: {fileID: 100000, guid: ca12ebd7c4f79b44ba39ce14b1b03690, type: 2}
+  newItem: {fileID: 0}
 --- !u!1 &737060754
 GameObject:
   m_ObjectHideFlags: 0

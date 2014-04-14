@@ -13,6 +13,9 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 		var hlpoint = renderer.bounds.center;
 		hlpoint.y = renderer.bounds.max.y;
 
+		var modvalue = this.GetComponent<ItemSpawner> ().newItem.GetComponent<Item> ().iValue;
+		var dmgint = (int) (damage * modvalue);
+
 		var healthLoss = Instantiate(prefab,
 		                             hlpoint,
 		                             Quaternion.identity) as GameObject;
