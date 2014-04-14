@@ -19,8 +19,13 @@ public class MonsterAttributes : Damagable {
 	// Update is called once per frame
 	void Update () {
 		if(health <= 0) {
+
+			var player = GameObject.FindGameObjectWithTag("Player");
+			player.GetComponent<Attributes>().giveXP(worthXP);
+
 			//TODO: animate?
 			Destroy(gameObject);
+
 		}
 	}
 

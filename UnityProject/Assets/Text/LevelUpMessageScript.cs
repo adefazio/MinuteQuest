@@ -9,7 +9,7 @@ public class LevelUpMessageScript : MonoBehaviour {
 	private int halfW = 1920/2;
 	private int halfH = 1080/2;
 	//private int swidth = 1920;
-	private int sheight = 1080;
+	//private int sheight = 1080;
 	private float startTime;
 	
 	void setupFonts() {
