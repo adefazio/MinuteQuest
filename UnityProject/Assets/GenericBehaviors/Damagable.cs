@@ -9,8 +9,9 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 	public void takeDamage(float damage) {
 		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
 			"Assets/Text/HealthLost.prefab", typeof(GameObject));
-		
-		var dmgint = (int)damage;
+
+		var modvalue = this.GetComponent<ItemSpawner> ().newItem.GetComponent<Item> ().iValue;
+		var dmgint = (int) (damage * modvalue);
 		var healthLoss = Instantiate(prefab,
 		                             transform.position + Vector3.up,
 		                             Quaternion.identity) as GameObject;
