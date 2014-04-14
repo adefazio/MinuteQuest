@@ -15,6 +15,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400004}
   m_Layer: 11
   m_Name: Blob
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.62197018, y: -1.01999998, z: 1}
+  m_LocalPosition: {x: 5.62197018, y: 0, z: 1}
   m_LocalScale: {x: .228559479, y: .228559211, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -158,6 +159,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   worthXP: 50
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a617f5e79537e74fa79c1781f2bbb23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gem: {fileID: 100000, guid: ca12ebd7c4f79b44ba39ce14b1b03690, type: 2}
+  newItem: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
