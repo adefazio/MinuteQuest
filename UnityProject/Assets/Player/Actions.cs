@@ -23,6 +23,11 @@ public class Actions : MonoBehaviour {
 	
 	private bool attackingMonster = false;
 	private Collider2D monsterTarget = null;
+
+	[HideInInspector]
+	public bool itemCollected = false;
+	[HideInInspector]
+	public GameObject itemTarget;
 	
 	void Awake()
 	{
@@ -110,6 +115,11 @@ public class Actions : MonoBehaviour {
 						attackingMonster = true;
 						monsterTarget = c;
 					}
+					if(c.gameObject.tag == "Item") {
+						itemCollected = true;
+						itemTarget = c.gameObject;
+					}
+
 				}
 
 				if(!monsterClicked) {

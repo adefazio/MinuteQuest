@@ -13,6 +13,7 @@ public class ItemSpawner : MonoBehaviour {
 	void Start () {
 		newItem = Instantiate (gem,transform.position,Quaternion.identity) as GameObject;
 		newItem.renderer.enabled = false;
+		newItem.GetComponent<BoxCollider2D> ().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -24,6 +25,8 @@ public class ItemSpawner : MonoBehaviour {
 	void OnDestroy () {
 		newItem.transform.position = transform.position + Vector3.up;
 		newItem.renderer.enabled = true;
+		newItem.GetComponent<Item> ().dropped = true;
+		newItem.GetComponent<BoxCollider2D> ().enabled = true;
 	}
 
 }
