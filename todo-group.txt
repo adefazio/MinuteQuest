@@ -1,0 +1,28 @@
+
+Tasks Outstanding
+
+ - Tiling ground, with ramps.
+	- Martin
+ - Tiling sky.
+	- Martin
+ - Tiling buildings, with rescaling, colouring for variety.
+	- Martin
+
+ - Monsters going damage to players
+   - Aaron
+ - Blob needs to attack and move better
+   - My/Aaron
+
+ - Items, randomised.
+   - Ed
+
+ - Random monsters, various versions of blob, and player clones
+  - Mayank
+
+ - Integrate new player animations into game
+ 	- Aaron
+
+ - Graphics
+  - Boss 
+  - City tileset
+  - Indoor
