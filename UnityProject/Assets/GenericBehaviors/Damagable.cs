@@ -6,17 +6,20 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 
 	abstract public int health { get; set;}
 
-	public void takeDamage(float damage) {
+	public void takeDamage(int damage) {
 		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
 			"Assets/Text/HealthLost.prefab", typeof(GameObject));
-		
-		var dmgint = (int)damage;
+
+		var hlpoint = renderer.bounds.center;
+		hlpoint.y = renderer.bounds.max.y;
+
 		var healthLoss = Instantiate(prefab,
-		                             transform.position + Vector3.up,
+		                             hlpoint,
 		                             Quaternion.identity) as GameObject;
 		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
-		hlbehavior.contents = dmgint.ToString();
+		Debug.Log("Spawning healthlost thingy: " + healthLoss);
+		hlbehavior.contents = damage.ToString();
 		
-		health -= dmgint;
+		health -= damage;
 	}
 }

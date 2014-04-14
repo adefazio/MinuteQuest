@@ -7,7 +7,7 @@ public class FireballScript : MonoBehaviour {
 	private float killAfter = 3.0f;
 
 	public int fireballLvl = 1;
-	private float damangePerLvl = 35.0f;
+	private int damangePerLvl = 35;
 
 	// Use this for initialization
 	void Start () {
@@ -43,7 +43,7 @@ public class FireballScript : MonoBehaviour {
 	
 	}
 
-	private float calcDamage() {
+	private int calcDamage() {
 		//TODO: Randomize?
 		return damangePerLvl*fireballLvl;
 	}

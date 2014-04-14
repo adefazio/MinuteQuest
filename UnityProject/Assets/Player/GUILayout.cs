@@ -94,7 +94,7 @@ public class GUILayout : MonoBehaviour {
 		///////////////
 		/// Timer
 		var ts = System.TimeSpan.FromSeconds(levelTime - Time.time + startTime);
-		var timeStr = string.Format("{0}:{1}", ts.Minutes.ToString(), ts.Seconds.ToString());
+		var timeStr = string.Format("{0}:{1,2:D2}", ts.Minutes, ts.Seconds);
 		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, bigTextFont);
 
 
