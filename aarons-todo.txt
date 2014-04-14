@@ -6,3 +6,5 @@
  - Monsters going to damage to players
  - Blob needs to attack and move better
  - Integrate new player animations into game
+ - Add IDamage to blobs, with animation.
+

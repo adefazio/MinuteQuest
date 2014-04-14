@@ -13,8 +13,6 @@ public class Actions : MonoBehaviour {
 	private float bottomBarScreenFraction = 0.278f;
 	private float howCloseToMonsterToMove = 1.0f;
 	private int fireballMana = 20;
-	private int fireballLvl = 1;
-	private int attackDamage = 20;
 
 	private Animator anim;					// Reference to the player's animator component.
 
@@ -134,7 +132,6 @@ public class Actions : MonoBehaviour {
 				mousePos.z = 0.0f;
 				var clickPos = mainCamera.ScreenToWorldPoint(mousePos);
 				var fb = Instantiate(fireballPrefab, clickPos, Quaternion.identity) as GameObject;
-				fb.GetComponent<FireballScript>().fireballLvl = fireballLvl;
 			}
 		}
 
@@ -199,22 +196,6 @@ public class Actions : MonoBehaviour {
 		anim.SetTrigger("Attack");
 		Debug.Log ("Attack");
 			
-		int mask = (1 << LayerMask.NameToLayer("Enemies"));
-
-		var posMod = isFacingRight ? Vector3.right : Vector3.left;
-		posMod *= 1.0f;
-
-		// Damage everything under fireball
-		var stuffHit = Physics2D.OverlapPointAll(
-			  transform.position + posMod,
-	          layerMask: mask);
-		
-		foreach(Collider2D hit in stuffHit) {
-			Debug.Log ("Hit with attack: " + hit);
-			var hitGO = hit.gameObject;
-			hitGO.GetComponent<MonsterAttributes>().takeDamage(attackDamage);
-		}
-
 		//attrs.takeDamage(13);
 
 		//attrs.giveXP(27);
