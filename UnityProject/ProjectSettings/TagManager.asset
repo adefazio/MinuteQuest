@@ -52,3 +52,7 @@ TagManager:
     userID: 2
     uniqueID: 2651025195
     locked: 0
+  - name: Weapons
+    userID: 3
+    uniqueID: 2412634071
+    locked: 0

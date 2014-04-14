@@ -259,6 +259,18 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e52900dc205c52c43a0a3c2749540090, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: e52900dc205c52c43a0a3c2749540090, type: 2}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: e52900dc205c52c43a0a3c2749540090, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 2412634071
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e52900dc205c52c43a0a3c2749540090, type: 2}
   m_RootGameObject: {fileID: 608931520}
@@ -1197,7 +1209,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1873043842}
   - 212: {fileID: 1873043843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,9 +1246,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2412634071
   m_Sprite: {fileID: 21300000, guid: acef5cbf8b7c83840a2f4905f5a79d9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1922977953
