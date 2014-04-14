@@ -203,6 +203,7 @@ public class Actions : MonoBehaviour {
 
 		var posMod = isFacingRight ? Vector3.right : Vector3.left;
 		posMod *= 1.0f;
+		posMod += 0.5f*Vector3.up;
 
 		// Damage everything under fireball
 		var stuffHit = Physics2D.OverlapPointAll(
