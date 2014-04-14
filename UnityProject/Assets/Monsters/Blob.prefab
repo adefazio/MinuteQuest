@@ -14,7 +14,6 @@ GameObject:
   - 61: {fileID: 6100000}
   - 82: {fileID: 8200000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400002}
   m_Layer: 11
   m_Name: Blob
   m_TagString: Enemy
@@ -145,19 +144,6 @@ MonoBehaviour:
   moveForce: 10000
   offset: {x: 5, y: 0, z: 0}
   attackAnimDist: 1
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d27596cc395baf648854ebd28a942eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
-  worthXP: 50
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
