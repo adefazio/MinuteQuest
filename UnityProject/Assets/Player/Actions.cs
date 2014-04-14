@@ -45,6 +45,9 @@ public class Actions : MonoBehaviour {
 		if(h != 0.0f) {
 			// Stop movement to mouse target if direction keys are pressed.
 			movingToClick = false;
+
+			// Run!
+			anim.SetBool("Running", true);
 		}
 
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
@@ -150,6 +153,7 @@ public class Actions : MonoBehaviour {
 		}
 
 		if(movingToClick || attackingMonster) {
+			anim.SetBool("Running", true);
 			var pos = transform.position;
 			var posDelta = playerMovementTarget - pos.x;
 			if(Mathf.Abs(posDelta) < Time.deltaTime*moveVelocity) {
@@ -164,6 +168,10 @@ public class Actions : MonoBehaviour {
 				pos += Mathf.Sign(posDelta)*(Time.deltaTime*moveVelocity * Vector3.right);
 			}
 			transform.position = pos;
+		} else {
+			if(h == 0.0f) { // movement key not down
+				anim.SetBool("Running", false);
+			}
 		}
 
 	}

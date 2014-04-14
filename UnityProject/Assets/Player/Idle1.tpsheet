@@ -1,0 +1,12 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: Idle1.png (3208 x 1304)
+# $TexturePacker:SmartUpdate:b16a29254ef2c8c42f791c894eb45cdf:83148d89c75cdc3ccca1ed7270d9c08c:ac5a85468b6b02e06647ad01123cf03c$
+#
+
+Idle01;1604;2;1600;1300;0.5;0.5
+Idle02;2;2;1600;1300;0.5;0.5

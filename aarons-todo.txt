@@ -2,3 +2,7 @@
  - Skin GUI
  - Add cloak
  - Animate blob's sprite during movement.
+
+ - Monsters going to damage to players
+ - Blob needs to attack and move better
+ - Integrate new player animations into game
