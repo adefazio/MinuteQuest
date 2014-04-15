@@ -1,0 +1,9 @@
+/Temp
+/obj
+/library
+*.csproj
+*.unityproj
+*.sln
+*.DS_Store
+UnityProject.userprefs
+Assets/Standard Assets

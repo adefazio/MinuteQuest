@@ -1,0 +1,29 @@
+
+Screen height 304
+width 572
+Aspect ratio 1.88
+16:9 is 1.78 instead.
+
+Player height 73.87
+Player leg spacing 15
+Bottom bar 85
+Timer box height 36
+Timer box width 88
+Timer font height 23
+
+Translating the above to 1080p by height:
+Player height 262.4px
+Player leg spacing 53px
+Bottom bar 302px
+Timer box height 127px
+Timer box width 312px
+Timer font height 81px
+
+Average male Australian height 1.75m
+1 Unity "unit" is 1 meter.
+Sprite is 230 heigh, so 2.3 units.
+1 meter is 150 pixels.
+Camera viewport is 7.2 meters heigh I guess.
+Camera "size" parameter is half height, so 
+camera size = 3.6.
+Bottom bar height is 2 meters then.
