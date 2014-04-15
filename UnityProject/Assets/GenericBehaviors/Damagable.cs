@@ -27,7 +27,7 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 		var healthLoss = Instantiate(prefab,
 		                             hlpoint,
 		                             Quaternion.identity) as GameObject;
-		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
+		var hlbehavior = healthLoss.GetComponent<AttributeChangeBehavior>();
 		//Debug.Log("Spawning healthlost thingy: " + healthLoss);
 		hlbehavior.contents = dmgint.ToString();
 		

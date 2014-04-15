@@ -4,7 +4,7 @@ using System.Collections;
 public class Attributes : Damagable {
 
 	public int _health = 1;
-	public int mana;
+	public int _mana;
 	public int manaPerSecond = 3;
 
 	public int maxHealth;
@@ -28,7 +28,22 @@ public class Attributes : Damagable {
 
 	public override int health {
 		get { return _health; }
-		set { _health = value; }
+		set { 
+			_health = value; 
+			if(_health > maxHealth)
+				_health = maxHealth;
+		}
+	}
+
+	public int mana {
+		get { return _mana; }
+		set { 
+			_mana = value; 
+			if(_mana > maxMana)
+				_mana = maxMana;
+			if(_mana < 0)
+				_mana = 0;
+		}
 	}
 
 	// Use this for initialization
@@ -70,9 +85,6 @@ public class Attributes : Damagable {
 
 	public void addMana() {
 		mana += manaPerSecond;
-		if(mana > maxMana) {
-			mana = maxMana;
-		}
 	}
 	
 	private void levelUp(){

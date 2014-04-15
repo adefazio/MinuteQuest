@@ -1,5 +1,4 @@
 
  - Add cloak.
  - make slime spawner.
- - Camera dead-zone.
  - Add mana/health orbs.
