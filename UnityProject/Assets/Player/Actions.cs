@@ -213,11 +213,12 @@ public class Actions : MonoBehaviour {
 
 		var posMod = isFacingRight ? Vector3.right : Vector3.left;
 		posMod *= 1.0f;
-		posMod += 0.5f*Vector3.up;
+		posMod += 0.8f*Vector3.up; // Roughly player center
 
 		// Damage everything under fireball
-		var stuffHit = Physics2D.OverlapPointAll(
-			  transform.position + posMod,
+		var stuffHit = Physics2D.OverlapCircleAll(
+			  point: transform.position + posMod,
+			  radius: 1.4f, // Feels right
 	          layerMask: mask);
 		
 		foreach(Collider2D hit in stuffHit) {

@@ -1,10 +1,10 @@
 
- - Skin GUI
  - Add cloak
  - Animate blob's sprite during movement.
 
  - Monsters going to damage to players
  - Blob needs to attack and move better
- - Integrate new player animations into game
- - Add IDamage to blobs, with animation.
+ - Change sword hitbox to circle that matches sword stroke
+ - make gem stats effect attacks, see the itemCollection script.
+ - make slime spawner.
 
