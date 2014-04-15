@@ -4,7 +4,6 @@
 
  - Monsters going to damage to players
  - Blob needs to attack and move better
- - Change sword hitbox to circle that matches sword stroke
  - make gem stats effect attacks, see the itemCollection script.
  - make slime spawner.
 

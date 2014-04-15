@@ -21,8 +21,8 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 		                             Quaternion.identity) as GameObject;
 		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
 		Debug.Log("Spawning healthlost thingy: " + healthLoss);
-		hlbehavior.contents = damage.ToString();
+		hlbehavior.contents = dmgint.ToString();
 		
-		health -= damage;
+		health -= dmgint;
 	}
 }
