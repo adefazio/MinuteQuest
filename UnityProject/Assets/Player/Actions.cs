@@ -16,6 +16,8 @@ public class Actions : MonoBehaviour {
 	private int fireballLvl = 1;
 	private int attackDamage = 20;
 
+	private float attackRadius = 1.3f;
+
 	private Animator anim;					// Reference to the player's animator component.
 
 	private bool movingToClick = false;
@@ -211,14 +213,12 @@ public class Actions : MonoBehaviour {
 			
 		int mask = (1 << LayerMask.NameToLayer("Enemies"));
 
-		var posMod = isFacingRight ? Vector3.right : Vector3.left;
-		posMod *= 1.0f;
-		posMod += 0.8f*Vector3.up; // Roughly player center
+		var posMod = 0.8f*Vector3.up; // Roughly player center
 
 		// Damage everything under fireball
 		var stuffHit = Physics2D.OverlapCircleAll(
 			  point: transform.position + posMod,
-			  radius: 1.4f, // Feels right
+			  radius: attackRadius, // Feels right
 	          layerMask: mask);
 		
 		foreach(Collider2D hit in stuffHit) {
