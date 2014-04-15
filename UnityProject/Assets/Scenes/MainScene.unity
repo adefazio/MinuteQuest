@@ -1124,8 +1124,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1054913673}
   - 212: {fileID: 1054913672}
+  - 114: {fileID: 1054913674}
   m_Layer: 8
-  m_Name: wall
+  m_Name: city1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1165,6 +1166,19 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 1245328192}
+--- !u!114 &1054913674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054913671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f19176e459b9d441a39ba9b238a98fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: .5
+  cameraPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1159867965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,13 +1437,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 1459723982}
   - 212: {fileID: 1459723981}
+  - 114: {fileID: 1459723983}
   m_Layer: 8
-  m_Name: wall
+  m_Name: city1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1459723981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1464,6 +1479,19 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 1245328192}
+--- !u!114 &1459723983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1459723980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f19176e459b9d441a39ba9b238a98fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: .5
+  cameraPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1522569798
 GameObject:
   m_ObjectHideFlags: 0
