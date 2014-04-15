@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BlobAttack
+  m_Name: BlobAttackGreen
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: attacking
@@ -86,7 +86,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 9bcce56248916be48bcbb92d65332698, type: 2}
+  - {fileID: 7400000, guid: 241c603eafc3f4c458fc581170b4dbfd, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 216, y: 180, z: 0}
   m_IKOnFeet: 0
@@ -113,9 +113,6 @@ StateMachine:
       first: {fileID: 110243659}
       second:
       - {fileID: 110193704}
-    data:
-      first: {fileID: 0}
-      second: []
     data:
       first: {fileID: 110277334}
       second:

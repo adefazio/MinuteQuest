@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57c09c17ceb4aeb498265b584c15e143
+guid: a9ec0c2c6eaa5fb408216b517c68fe2b
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -33,7 +33,7 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: .5, y: .5}
   spritePixelsToUnits: 400
   alphaIsTransparency: 1
@@ -45,7 +45,7 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: Slime1_0
+    - name: SlimePurple_0
       rect:
         serializedVersion: 2
         x: 0
@@ -54,7 +54,7 @@ TextureImporter:
         height: 500
       alignment: 7
       pivot: {x: .5, y: 0}
-    - name: Slime1_1
+    - name: SlimePurple_1
       rect:
         serializedVersion: 2
         x: 823

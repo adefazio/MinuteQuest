@@ -10,11 +10,14 @@ public class BlobController2 : MonoBehaviour {
 
 	private Animator anim;
 	private Transform player;
+	private float timeOffset;
 
     // Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator>();
+
+		timeOffset = Random.value;
     }
 
 	void Update() {
@@ -30,7 +33,8 @@ public class BlobController2 : MonoBehaviour {
 			transform.localScale = new Vector3(direction, 1.0f, 1.0f);
 
 			// Every second, we move for about a 1/2 second 
-			var mseconds = 1000.0f*(Time.time - (int)Time.time);
+			var t = Time.time + timeOffset;
+			var mseconds = 1000.0f*(t - (int)t);
 			// Lets make speed increase linearly as we get to the half second mark.
 			var pos = transform.position;
 			if(mseconds < 500) {

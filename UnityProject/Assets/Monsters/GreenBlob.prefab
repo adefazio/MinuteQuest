@@ -10,14 +10,14 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 50: {fileID: 5000000}
-  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
   - 61: {fileID: 6100000}
   - 82: {fileID: 8200000}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400000}
   m_Layer: 11
-  m_Name: Blob
+  m_Name: GreenBlob
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,10 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b8009893ab6964b90954c4cbba0ec1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a617f5e79537e74fa79c1781f2bbb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
+  gem: {fileID: 100000, guid: ca12ebd7c4f79b44ba39ce14b1b03690, type: 2}
+  newItem: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,11 +166,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a617f5e79537e74fa79c1781f2bbb23, type: 3}
+  m_Script: {fileID: 11500000, guid: 90b8009893ab6964b90954c4cbba0ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gem: {fileID: 100000, guid: ca12ebd7c4f79b44ba39ce14b1b03690, type: 2}
-  newItem: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
