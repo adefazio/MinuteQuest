@@ -5,6 +5,7 @@ public class Attributes : Damagable {
 
 	public int _health = 1;
 	public int mana;
+	public int manaPerSecond = 3;
 
 	public int maxHealth;
 	public int maxMana;
@@ -37,6 +38,8 @@ public class Attributes : Damagable {
 
 		health = maxHealth;
 		mana = maxMana;
+
+		InvokeRepeating("addMana", 0f, 1.0f);   
 	}
 	
 	// Update is called once per frame
@@ -65,6 +68,12 @@ public class Attributes : Damagable {
 		return xpForLevel(level+1) - xp;
 	}
 
+	public void addMana() {
+		mana += manaPerSecond;
+		if(mana > maxMana) {
+			mana = maxMana;
+		}
+	}
 	
 	private void levelUp(){
 		level += 1;

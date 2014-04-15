@@ -12,8 +12,9 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 
 		var hlpoint = renderer.bounds.center;
 		hlpoint.y = renderer.bounds.max.y;
-
+		
 		var dmgint = damage;
+		/*
 		var itmSpawner = this.GetComponent<ItemSpawner> ();
 		if(itmSpawner != null) {
 			var modvalue = this.GetComponent<ItemSpawner> ().newItem.GetComponent<Item> ().iValue;
@@ -21,12 +22,13 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 		} else {
 			dmgint = damage;
 		}
+		*/
 
 		var healthLoss = Instantiate(prefab,
 		                             hlpoint,
 		                             Quaternion.identity) as GameObject;
 		var hlbehavior = healthLoss.GetComponent<HealthLostBehavior>();
-		Debug.Log("Spawning healthlost thingy: " + healthLoss);
+		//Debug.Log("Spawning healthlost thingy: " + healthLoss);
 		hlbehavior.contents = dmgint.ToString();
 		
 		health -= dmgint;

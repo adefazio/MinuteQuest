@@ -1,11 +1,5 @@
 
- - Add cloak
- - Animate blob's sprite during movement.
-
- - Monsters going to damage to players
- - Blob needs to attack and move better
- - make gem stats effect attacks, see the itemCollection script.
+ - Add cloak.
  - make slime spawner.
  - Camera dead-zone.
- - Mana increments.
-
+ - Add mana/health orbs.
