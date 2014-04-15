@@ -1,0 +1,2 @@
+- add scrolling to backgrounds
+- procedural environment generation
