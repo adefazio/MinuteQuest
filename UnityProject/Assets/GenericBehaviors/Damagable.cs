@@ -13,8 +13,14 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 		var hlpoint = renderer.bounds.center;
 		hlpoint.y = renderer.bounds.max.y;
 
-		var modvalue = this.GetComponent<ItemSpawner> ().newItem.GetComponent<Item> ().iValue;
-		var dmgint = (int) (damage * modvalue);
+		var dmgint = damage;
+		var itmSpawner = this.GetComponent<ItemSpawner> ();
+		if(itmSpawner != null) {
+			var modvalue = this.GetComponent<ItemSpawner> ().newItem.GetComponent<Item> ().iValue;
+			dmgint = (int) (damage * modvalue);
+		} else {
+			dmgint = damage;
+		}
 
 		var healthLoss = Instantiate(prefab,
 		                             hlpoint,

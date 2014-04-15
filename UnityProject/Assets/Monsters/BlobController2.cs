@@ -5,7 +5,7 @@ public class BlobController2 : MonoBehaviour {
 
 	public Vector3 offset;			// The offset at which the Health Bar follows the player.
 
-	private float attackAnimDist = 2f;
+	private float attackAnimDist = 1.2f;
 	private float velocityMultipler = 0.01f;
 
 	private Animator anim;
@@ -13,11 +13,8 @@ public class BlobController2 : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-		//Debug.Log("Getting player object");
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator>();
-		//InvokeRepeating("bloop", 0f, 1.0f);        
-		Debug.Log ("Blob2");
     }
 
 	void Update() {
@@ -44,18 +41,13 @@ public class BlobController2 : MonoBehaviour {
 
 
 	}
-	
 
-	// Update is called once per frame
-//	void FixedUpdate () {
-
-
-
-	//	transform.position = new Vector3(player.position.x + offset.x, transform.position.y, transform.position.z) ;
-	
-//	}
-
-
-
-
+	public void hitPlayer() {
+		float dx = transform.position.x - player.position.x;
+		if (Mathf.Abs(dx) < attackAnimDist ) {
+			//TODO hook damage to gem and monster level.
+			var dmg = 10;
+			player.GetComponent<Attributes>().takeDamage(dmg);
+        }
+    }
 }
