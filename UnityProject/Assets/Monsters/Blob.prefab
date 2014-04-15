@@ -40,8 +40,8 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 3
-  m_LinearDrag: 0
+  m_Mass: 80
+  m_LinearDrag: 1
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_FixedAngle: 1
@@ -140,12 +140,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced97c2c2b0f42442b20fbf4518c98c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 90b8009893ab6964b90954c4cbba0ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 10000
-  offset: {x: 5, y: 0, z: 0}
-  attackAnimDist: 1
+  moveForce: 365
+  offset: {x: 0, y: 0, z: 0}
+  attackAnimDist: 2
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

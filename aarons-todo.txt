@@ -6,4 +6,6 @@
  - Blob needs to attack and move better
  - make gem stats effect attacks, see the itemCollection script.
  - make slime spawner.
+ - Camera dead-zone.
+ - Mana increments.
 

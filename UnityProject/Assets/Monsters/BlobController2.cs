@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlobController : MonoBehaviour {
+public class BlobController2 : MonoBehaviour {
 
-	//private float moveForce = 365.0f;
 	public Vector3 offset;			// The offset at which the Health Bar follows the player.
 
 	private float attackAnimDist = 2f;
@@ -18,40 +17,31 @@ public class BlobController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator>();
 		//InvokeRepeating("bloop", 0f, 1.0f);        
-        
+		Debug.Log ("Blob2");
     }
 
 	void Update() {
 		float dx = transform.position.x - player.position.x;
+		float direction = (dx > 0 ? 1.0f : -1.0f);
+
 		if (Mathf.Abs(dx) < attackAnimDist ) {
 			anim.SetBool ("attacking",true);
 		}
 		else {
 			anim.SetBool ("attacking", false);
+
+			transform.localScale = new Vector3(direction, 1.0f, 1.0f);
+
+			// Every second, we move for about a 1/2 second 
+			var mseconds = 1000.0f*(Time.time - (int)Time.time);
+			// Lets make speed increase linearly as we get to the half second mark.
+			var pos = transform.position;
+			if(mseconds < 500) {
+				pos.x += Time.deltaTime*direction*velocityMultipler*(mseconds - 500f);
+            }
+            transform.position = pos;
 		}
 
-		Vector2 direction;
-		if(dx < 0) {
-			anim.SetBool ("left", true);
-			direction = -Vector2.right;
-		}
-		else {
-			anim.SetBool ("left",false);
-			direction = Vector2.right;
-		}
-
-		// Every second, we move for about a 1/2 second 
-		var mseconds = 1000.0f*(Time.time - (int)Time.time);
-		// Lets make speed increase linearly as we get to the half second mark.
-		//var vel = rigidbody2D.velocity;
-		var pos = transform.position;
-		if(mseconds < 500) {
-			pos.x += Time.deltaTime*direction.x*velocityMultipler*(mseconds - 500f);
-			//vel.x = direction.x*velocityMultipler*(mseconds - 500f);
-		}
-		//rigidbody2D.velocity = vel;
-		transform.position = pos;
-		//Debug.Log("Velocity: " + vel);
 
 	}
 	
