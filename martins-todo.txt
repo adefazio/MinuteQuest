@@ -1,0 +1,2 @@
+- Collecting items
+- Apply particle effects to the monster
