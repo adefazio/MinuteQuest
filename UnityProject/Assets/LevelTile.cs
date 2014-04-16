@@ -14,6 +14,7 @@ public class LevelTile : MonoBehaviour {
 		tileWidth = tileSprite.bounds.size.x;
 		tileHeight = tileSprite.bounds.size.y;
 		Instantiate (tileObject, transform.position, transform.rotation);
+		Instantiate (tileObject, transform.position + Vector3.left * tileWidth, transform.rotation);
 		transform.position += Vector3.right * tileWidth;
 	}
 	
@@ -23,5 +24,6 @@ public class LevelTile : MonoBehaviour {
 			Instantiate (tileObject, transform.position, transform.rotation);
 			transform.position += Vector3.right * tileWidth;
 		}
+
 	}
 }
