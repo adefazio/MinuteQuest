@@ -6,11 +6,11 @@ public class MonsterGenerator : MonoBehaviour {
 
 	private Dictionary<int, bool> spawnedMonstersInSegment;
 
-	private float segmentWidth = 50.0f;
+	private float segmentWidth = 20.0f;
 
 	private System.Random rnd;
-	private int gangsPerSegmentMin = 2;
-	private int gangsPerSegmentMax = 5;
+	private int gangsPerSegmentMin = 1;
+	private int gangsPerSegmentMax = 4;
 	private int monstersPerGangMin = 1;
 	private int monstersPerGangMax = 5;
 	private float gangRadius = 2.0f;
