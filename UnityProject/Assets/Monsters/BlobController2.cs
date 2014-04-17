@@ -11,11 +11,13 @@ public class BlobController2 : MonoBehaviour {
 	private Animator anim;
 	private Transform player;
 	private float timeOffset;
+	private MonsterAttributes attrs;
 
     // Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		anim = GetComponent<Animator>();
+		attrs = GetComponent<MonsterAttributes>();
 
 		timeOffset = Random.value;
     }
@@ -30,7 +32,9 @@ public class BlobController2 : MonoBehaviour {
 		else {
 			anim.SetBool ("attacking", false);
 
-			transform.localScale = new Vector3(direction, 1.0f, 1.0f);
+
+			var s = transform.localScale;
+			transform.localScale = new Vector3(s.z*direction, s.z, s.z);
 
 			// Every second, we move for about a 1/2 second 
 			var t = Time.time + timeOffset;
@@ -38,7 +42,7 @@ public class BlobController2 : MonoBehaviour {
 			// Lets make speed increase linearly as we get to the half second mark.
 			var pos = transform.position;
 			if(mseconds < 500) {
-				pos.x += Time.deltaTime*direction*velocityMultipler*(mseconds - 500f);
+				pos.x += Time.deltaTime*attrs.speedScaling*direction*velocityMultipler*(mseconds - 500f);
             }
             transform.position = pos;
 		}
@@ -50,7 +54,7 @@ public class BlobController2 : MonoBehaviour {
 		float dx = transform.position.x - player.position.x;
 		if (Mathf.Abs(dx) < attackAnimDist ) {
 			//TODO hook damage to gem and monster level.
-			var dmg = 10;
+			var dmg = attrs.getRandomAttackDamage();
 			player.GetComponent<Attributes>().takeDamage(dmg);
         }
     }

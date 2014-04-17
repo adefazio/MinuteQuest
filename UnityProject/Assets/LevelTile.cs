@@ -6,13 +6,13 @@ public class LevelTile : MonoBehaviour {
 	public GameObject tileObject;
 	private Transform player;
 	private float tileWidth;
-	private float tileHeight;
+	//private float tileHeight;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		SpriteRenderer tileSprite = tileObject.GetComponent<SpriteRenderer> ();
 		tileWidth = tileSprite.bounds.size.x;
-		tileHeight = tileSprite.bounds.size.y;
+		///tileHeight = tileSprite.bounds.size.y;
 		Instantiate (tileObject, transform.position, transform.rotation);
 		Instantiate (tileObject, transform.position + Vector3.left * tileWidth, transform.rotation);
 		transform.position += Vector3.right * tileWidth;

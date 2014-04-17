@@ -5,7 +5,7 @@ public class Attributes : Damagable {
 
 	public int _health = 1;
 	public int _mana;
-	public int manaPerSecond = 3;
+	public int manaPerSecondPercentage = 3;
 
 	public int maxHealth;
 	public int maxMana;
@@ -84,7 +84,7 @@ public class Attributes : Damagable {
 	}
 
 	public void addMana() {
-		mana += manaPerSecond;
+		mana += (int)(maxMana*(manaPerSecondPercentage/100.0f));
 	}
 	
 	private void levelUp(){

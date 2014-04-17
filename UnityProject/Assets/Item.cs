@@ -29,7 +29,7 @@ public class Item : MonoBehaviour {
 	public bool dropped = false;
 
 	private System.Random r = new System.Random ();
-	private Transform tPlayer;
+	//private Transform tPlayer;
 	private float dropTime = 0.0f;
 
 	// Use this for initialization
@@ -39,7 +39,7 @@ public class Item : MonoBehaviour {
 		iEnum = (Stat)stats.GetValue (iStat);
 		iValue = (float)r.NextDouble () * iLevel;
 		iName = iEnum.ToString () + " GEM";
-		tPlayer = GameObject.FindGameObjectWithTag("Player").transform;
+		//tPlayer = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame

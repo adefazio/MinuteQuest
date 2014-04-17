@@ -8,8 +8,20 @@ public class OrbScript : MonoBehaviour {
 	public int attributeIncrease = 10;
 
 	private Transform player;
-	private float orbPickupRange = 0.5f;
+	private float orbPickupRange = 1.0f;
 	private Object gainTextPrefab;
+
+	private static int attrPerLevel = 20;
+	private static Object healthOrbPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
+		"Assets/Items/HealthOrb.prefab", typeof(GameObject));
+	private static Object manaOrbPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
+		"Assets/Items/manaOrb.prefab", typeof(GameObject));
+
+	public static void spawnRandomOrb(Vector3 pos, int level) {
+		var orb = Instantiate (Random.value < 0.5 ? healthOrbPrefab : manaOrbPrefab,
+		                       pos, Quaternion.identity) as GameObject;
+		orb.GetComponent<OrbScript>().attributeIncrease = level*attrPerLevel;
+	}
 
 	// Use this for initialization
 	void Start () {

@@ -11,7 +11,7 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 			"Assets/Text/HealthLost.prefab", typeof(GameObject));
 
 		var hlpoint = renderer.bounds.center;
-		hlpoint.y = renderer.bounds.max.y;
+		hlpoint.y = renderer.bounds.max.y + 0.3f;
 		
 		var dmgint = damage;
 		/*
