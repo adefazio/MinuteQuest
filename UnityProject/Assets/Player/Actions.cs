@@ -34,6 +34,7 @@ public class Actions : MonoBehaviour {
 	public GameObject itemTarget;
 
 	private Color disguisedColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+	private SpriteRenderer disguiseRenderer;
 
 	void Awake()
 	{
@@ -46,6 +47,7 @@ public class Actions : MonoBehaviour {
 		fireballPrefab = Resources.Load("ParticleEffects/Fireball", typeof(GameObject));
 		attrs = GetComponent<Attributes>();
 		gui = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUILayout>();
+		disguiseRenderer = GameObject.FindGameObjectWithTag("Disguise").GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -235,6 +237,7 @@ public class Actions : MonoBehaviour {
 			Debug.Log ("Disguised, mana: " + requiredMana);
             
 			((SpriteRenderer)(renderer)).color = disguisedColor;
+			disguiseRenderer.enabled = true;
 
 			Invoke("renewDisguise", 1.0f);
         } else {
@@ -245,6 +248,7 @@ public class Actions : MonoBehaviour {
 	void cancelDisguise() {
 		attrs.isDisguised = false;
 		((SpriteRenderer)(renderer)).color = Color.white;
+		disguiseRenderer.enabled = false;
 	}
 
 	void faceInDirection(bool faceRight) {
