@@ -20,6 +20,9 @@ public class MonsterAttributes : Damagable {
 
 	private float statOrbDropChance = 0.2f;
 
+	public delegate void DeathEventHandler();
+	public event DeathEventHandler deathOccured;
+
 	public override int health {
 		get { return _health; }
 		set { _health = value; }
@@ -58,6 +61,8 @@ public class MonsterAttributes : Damagable {
 			if(Random.value < statOrbDropChance) {
 				OrbScript.spawnRandomOrb(transform.position, level);
 			}
+
+			deathOccured();
 
 			//TODO: animate?
 			Destroy(gameObject);

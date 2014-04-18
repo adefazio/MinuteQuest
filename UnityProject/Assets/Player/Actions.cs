@@ -146,7 +146,7 @@ public class Actions : MonoBehaviour {
 				mousePos.z = 0.0f;
 				var clickPos = mainCamera.ScreenToWorldPoint(mousePos);
 				var fb = Instantiate(fireballPrefab, clickPos, Quaternion.identity) as GameObject;
-				fb.GetComponent<FireballScript>().fireballLvl = fireballLvl;
+				fb.GetComponent<FireballScript>().fireballLvl = (int)(attrs.energy/10.0f);
 			}
 		}
 

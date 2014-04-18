@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BlobAttackRed
+  m_Name: BlobAttackYellow
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: attacking
@@ -86,7 +86,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 1327f20f375dd264bbc0be5295092dc8, type: 2}
+  - {fileID: 7400000, guid: 6c58a02f881de7a49a6dbbdab78e2f94, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 216, y: 180, z: 0}
   m_IKOnFeet: 0

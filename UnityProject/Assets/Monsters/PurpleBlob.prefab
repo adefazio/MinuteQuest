@@ -127,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e684b7ed11575b642975cd80b5df4919, type: 2}
+  m_Controller: {fileID: 9100000, guid: c31c9d67da0d4cb4b92d59f0b5eca386, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   level: 1
   physicalScaling: 1
   speedScaling: 1
-  damageScaling: 1
+  damageScaling: 3
   healthScaling: 1
 --- !u!114 &11400004
 MonoBehaviour:

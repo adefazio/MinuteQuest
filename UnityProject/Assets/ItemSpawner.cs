@@ -8,12 +8,16 @@ public class ItemSpawner : MonoBehaviour {
 	public GameObject gem;
 	[HideInInspector]
 	public GameObject newItem;
+	private MonsterAttributes attrs;
 
 	// Use this for initialization
 	void Start () {
 		newItem = Instantiate (gem,transform.position,Quaternion.identity) as GameObject;
 		newItem.renderer.enabled = false;
 		newItem.GetComponent<BoxCollider2D> ().enabled = false;
+
+		attrs = GetComponent<MonsterAttributes>();
+		attrs.deathOccured += new MonsterAttributes.DeathEventHandler(OnDeath);
 	}
 	
 	// Update is called once per frame
@@ -21,8 +25,7 @@ public class ItemSpawner : MonoBehaviour {
 
 	}
 
-	// Called on object destruction
-	void OnDestroy () {
+	void OnDeath () {
 		newItem.transform.position = transform.position + Vector3.up;
 		newItem.renderer.enabled = true;
 		newItem.GetComponent<Item> ().dropped = true;
