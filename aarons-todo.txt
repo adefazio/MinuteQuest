@@ -3,6 +3,5 @@
  - Add ray gun and shooting
  - Add GUI Skin
  - Add health bars above monsters
- - Add different coloured slimes.
 
  - Implement some sort of boss.

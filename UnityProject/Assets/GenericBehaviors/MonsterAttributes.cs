@@ -3,7 +3,8 @@ using System.Collections;
 
 public class MonsterAttributes : Damagable {
 
-	public int _health;
+	private int _health;
+	private int maxHealth;
 	public int worthXP;
 
 	public int level = 1;
@@ -28,6 +29,10 @@ public class MonsterAttributes : Damagable {
 		set { _health = value; }
 	}
 
+	public float healthFraction {
+		get { return _health / ((float)maxHealth); }
+	}
+
 	private float nextFloat(float x, float y) {
 		return x + Random.value * (y-x);
 	}
@@ -43,11 +48,17 @@ public class MonsterAttributes : Damagable {
 
 		health = (level + 3) * healthPerLevel;
 		health = (int)(healthScaling*physicalScaling*health);
+		maxHealth = health;
 		transform.localScale *= physicalScaling;
 
 		worthXP = (int)(level * xpPerLevel * nextFloat(0.5f, 2.0f));
 
+		// Create health bar
 
+		var healthBarPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/Monsters/Health.prefab", typeof(GameObject));
+		var healthBar = Instantiate(healthBarPrefab,transform.position, Quaternion.identity) as GameObject;
+		healthBar.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
