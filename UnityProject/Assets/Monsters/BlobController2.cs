@@ -4,6 +4,7 @@ using System.Collections;
 public class BlobController2 : MonoBehaviour {
 
 	public Vector3 offset;			// The offset at which the Health Bar follows the player.
+	public AudioClip attackSound;
 
 	private float attackAnimDist = 1.2f;
 	private float velocityMultipler = 0.01f;
@@ -20,6 +21,8 @@ public class BlobController2 : MonoBehaviour {
 		attrs = GetComponent<MonsterAttributes>();
 
 		timeOffset = Random.value;
+
+		audio.PlayDelayed(Random.value);
     }
 
 	void Update() {
@@ -51,6 +54,8 @@ public class BlobController2 : MonoBehaviour {
 	}
 
 	public void hitPlayer() {
+		AudioSource.PlayClipAtPoint(attackSound, transform.position);
+
 		float dx = transform.position.x - player.position.x;
 		if (Mathf.Abs(dx) < attackAnimDist ) {
 			//TODO hook damage to gem and monster level.
