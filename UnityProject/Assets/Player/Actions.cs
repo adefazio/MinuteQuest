@@ -4,16 +4,18 @@ using System.Collections;
 public class Actions : MonoBehaviour {
 
 	private Camera mainCamera;
+	private GUILayout gui;
 	private Object fireballPrefab;
 	private Attributes attrs;
 	public bool isJumping = false;
 	public bool isFacingRight = true;
+
 	private float jumpForce =  80000.0f;
 	private float moveVelocity = 6.0f;
 	private float bottomBarScreenFraction = 0.278f;
 	private float howCloseToMonsterToMove = 1.0f;
 	private int fireballMana = 20;
-	private int fireballLvl = 1;
+	private float disguiseManaFraction = 0.1f;
 	private int attackDamage = 20;
 
 	private float attackRadius = 1.3f;
@@ -30,7 +32,9 @@ public class Actions : MonoBehaviour {
 	public bool itemCollected = false;
 	[HideInInspector]
 	public GameObject itemTarget;
-	
+
+	private Color disguisedColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
@@ -41,6 +45,7 @@ public class Actions : MonoBehaviour {
 		mainCamera = GameObject.FindObjectOfType<Camera>();
 		fireballPrefab = Resources.Load("ParticleEffects/Fireball", typeof(GameObject));
 		attrs = GetComponent<Attributes>();
+		gui = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUILayout>();
 	}
 	
 	// Update is called once per frame
@@ -52,48 +57,10 @@ public class Actions : MonoBehaviour {
 			// Stop movement to mouse target if direction keys are pressed.
 			movingToClick = false;
 
-			// Run!
 			anim.SetBool("Running", true);
-		}
 
-		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		if (h > 0.0f) {
-			//Debug.Log ("Move right");
-
-			if(isFacingRight) {
-				transform.position += (Time.deltaTime*moveVelocity * Vector3.right);
-			} else {
-				//Flip to facing right
-				transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-			}
-			isFacingRight = true;
-		} else if (h < 0.0f) {
-
-			//Debug.Log ("Move left");
-			if(!isFacingRight) {
-				transform.position -= Time.deltaTime*moveVelocity * Vector3.right;
-			} else {
-				//Flip to facing left
-				transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-			}
-			isFacingRight = false;
-		}
-
-		/////////////////////////////////////
-
-		var jumpBtnDown = Input.GetButtonDown("Jump");
-
-		if(jumpBtnDown && !isJumping) {
-			Debug.Log("Jump triggered", gameObject);
-			isJumping = true;
-			movingToClick = false;
-			rigidbody2D.AddForce(Vector2.up * jumpForce);
-		}
-
-		var attackBtnDown = Input.GetButtonDown("Fire1");
-		if(attackBtnDown) {
-			//!anim.GetCurrentAnimatorStateInfo(0).IsName("AttackAnimation")
-			triggerAttack();
+			faceInDirection(h > 0.0f);
+			transform.position += (h*Time.deltaTime*moveVelocity * Vector3.right);
 		}
 
 		///////////////////////////////////////
@@ -126,27 +93,33 @@ public class Actions : MonoBehaviour {
 				if(!monsterClicked) {
 					movingToClick = true;
 					playerMovementTarget = clickPos.x;
-
-					if (playerMovementTarget - transform.position.x > 0) { 		
-						transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-						isFacingRight = true;
-					} else {
-						transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-						isFacingRight = false;
-					}
 				}
 			}
 		}
 
 		if(Input.GetMouseButtonDown(1)) {
 			Debug.Log ("Mouse button 1 pressed");
-			if(attrs.mana >= fireballMana) {
-				attrs.mana -= fireballMana;
-				mousePos.z = 0.0f;
-				var clickPos = mainCamera.ScreenToWorldPoint(mousePos);
-				var fb = Instantiate(fireballPrefab, clickPos, Quaternion.identity) as GameObject;
-				fb.GetComponent<FireballScript>().fireballLvl = (int)(attrs.energy/10.0f);
+			if(gui.selectedSpell == GUILayout.FIREBALL) {
+				triggerFireball(mousePos);
+			} else {
+				toggleDisguise();
 			}
+		}
+
+		/////////////////////////////////////
+		
+		var jumpBtnDown = Input.GetButtonDown("Jump");
+		
+		if(jumpBtnDown && !isJumping) {
+			Debug.Log("Jump triggered", gameObject);
+			isJumping = true;
+			movingToClick = false;
+			rigidbody2D.AddForce(Vector2.up * jumpForce);
+		}
+		
+		var attackBtnDown = Input.GetButtonDown("Fire1");
+		if(attackBtnDown) {
+            triggerAttack();
 		}
 
 		if(attackingMonster) {
@@ -159,15 +132,14 @@ public class Actions : MonoBehaviour {
 			playerMovementTarget = monsterpoint.x + directionToPlayer*howCloseToMonsterToMove;
 			Debug.Log("player location: " + transform.position.x);
 			Debug.Log ("monsterpoint: " + monsterpoint.x);
-			//monsterpoint.x = playerMovementTarget;
-			//Debug.DrawRay(monsterpoint, Vector3.up);
 		}
 
 		if(movingToClick || attackingMonster) {
 			anim.SetBool("Running", true);
 			var pos = transform.position;
 			var posDelta = playerMovementTarget - pos.x;
-			if(Mathf.Abs(posDelta) < Time.deltaTime*moveVelocity) {
+			faceInDirection(posDelta > 0.0f);
+            if(Mathf.Abs(posDelta) < Time.deltaTime*moveVelocity) {
 				pos.x = playerMovementTarget;
 				movingToClick = false;
 				if(attackingMonster) {
@@ -207,6 +179,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void triggerAttack(){
+		cancelDisguise();
 		anim.SetTrigger("Attack");
 		Debug.Log ("Attack");
 			
@@ -231,5 +204,57 @@ public class Actions : MonoBehaviour {
 		//attrs.giveXP(27);
 	}
 
-	
+	void triggerFireball(Vector3 pos) {
+		cancelDisguise();
+		if(attrs.mana >= fireballMana) {
+			attrs.mana -= fireballMana;
+			pos.z = 0.0f;
+			var clickPos = mainCamera.ScreenToWorldPoint(pos);
+			var fb = Instantiate(fireballPrefab, clickPos, Quaternion.identity) as GameObject;
+			fb.GetComponent<FireballScript>().fireballLvl = (int)(attrs.energy/10.0f);
+		}
+	}
+
+	void toggleDisguise() {
+		if(attrs.isDisguised) {
+			cancelDisguise();
+		} else {
+			attrs.isDisguised = true;
+			renewDisguise();
+		}
+	}
+
+	void renewDisguise() {
+		if(!attrs.isDisguised){
+			return;
+		}
+
+		var requiredMana = (int)(attrs.maxMana * disguiseManaFraction);
+		if(attrs.mana >= requiredMana) {
+			attrs.mana -= requiredMana;
+			Debug.Log ("Disguised, mana: " + requiredMana);
+            
+			((SpriteRenderer)(renderer)).color = disguisedColor;
+
+			Invoke("renewDisguise", 1.0f);
+        } else {
+			cancelDisguise();
+		}
+	}
+
+	void cancelDisguise() {
+		attrs.isDisguised = false;
+		((SpriteRenderer)(renderer)).color = Color.white;
+	}
+
+	void faceInDirection(bool faceRight) {
+		if(faceRight && !isFacingRight) {
+			transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+			isFacingRight = true;
+		}
+		if(!faceRight && isFacingRight) {
+			transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+			isFacingRight = false;
+		}
+    }
 }

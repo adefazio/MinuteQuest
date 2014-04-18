@@ -9,6 +9,7 @@ public class Attributes : Damagable {
 
 	public int maxHealth;
 	public int maxMana;
+	public bool isDisguised = false;
 
 	[HideInInspector]
 	public int level = 1;

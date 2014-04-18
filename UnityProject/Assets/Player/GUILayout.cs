@@ -7,8 +7,19 @@ public class GUILayout : MonoBehaviour {
 
 	private GUIStyle whiteStyle;
 	private GUIStyle blankStyle;
-	private int selectedWeapon = 0;
-	private int selectedSpell = 0;
+
+	[HideInInspector]
+	public static int SABER = 0;
+	[HideInInspector]
+	public static int GUN = 1;
+	[HideInInspector]
+	public static int FIREBALL = 0;
+	[HideInInspector]
+	public static int DISGUISE = 1;
+
+	public int selectedWeapon = SABER;
+	public int selectedSpell = FIREBALL;
+
 
 	public GUIStyle buttonStyle;
 	GUIStyle timerStyle;

@@ -8,33 +8,42 @@ public class BlobController2 : MonoBehaviour {
 
 	private float attackAnimDist = 1.2f;
 	private float velocityMultipler = 0.01f;
+	private float randomDirection = 1.0f;
 
 	private Animator anim;
 	private Transform player;
+	private Attributes pattrs;
 	private float timeOffset;
 	private MonsterAttributes attrs;
 
     // Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+		pattrs = player.GetComponent<Attributes>();
 		anim = GetComponent<Animator>();
 		attrs = GetComponent<MonsterAttributes>();
 
 		timeOffset = Random.value;
 
 		audio.PlayDelayed(Random.value);
+		InvokeRepeating("randomizeDirection", timeOffset, 1.0f);
     }
 
 	void Update() {
 		float dx = transform.position.x - player.position.x;
-		float direction = (dx > 0 ? 1.0f : -1.0f);
 
-		if (Mathf.Abs(dx) < attackAnimDist ) {
+
+		if (Mathf.Abs(dx) < attackAnimDist && !pattrs.isDisguised) {
 			anim.SetBool ("attacking",true);
 		}
 		else {
 			anim.SetBool ("attacking", false);
 
+			float direction = (dx > 0 ? 1.0f : -1.0f);
+
+			if(pattrs.isDisguised) {
+				direction = randomDirection;
+			}
 
 			var s = transform.localScale;
 			transform.localScale = new Vector3(s.z*direction, s.z, s.z);
@@ -49,8 +58,10 @@ public class BlobController2 : MonoBehaviour {
             }
             transform.position = pos;
 		}
+	}
 
-
+	public void randomizeDirection() {
+		randomDirection = (Random.value < 0.5 ? 1.0f : -1.0f);
 	}
 
 	public void hitPlayer() {

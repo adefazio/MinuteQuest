@@ -12,13 +12,15 @@ public class OrbScript : MonoBehaviour {
 	private Object gainTextPrefab;
 
 	private static int attrPerLevel = 20;
-	private static Object healthOrbPrefab = Resources.Load("Items/HealthOrb", typeof(GameObject));
-	private static Object manaOrbPrefab = Resources.Load("Items/manaOrb", typeof(GameObject));
 
 	public static void spawnRandomOrb(Vector3 pos, int level) {
+		Object healthOrbPrefab = Resources.Load("Items/HealthOrb", typeof(GameObject));
+		Object manaOrbPrefab = Resources.Load("Items/ManaOrb", typeof(GameObject));
+
 		var orb = Instantiate (Random.value < 0.5 ? healthOrbPrefab : manaOrbPrefab,
 		                       pos, Quaternion.identity) as GameObject;
-		orb.GetComponent<OrbScript>().attributeIncrease = level*attrPerLevel;
+		var os = orb.GetComponent<OrbScript>();
+		os.attributeIncrease = level*attrPerLevel;
 	}
 
 	// Use this for initialization
