@@ -55,8 +55,8 @@ public class MonsterAttributes : Damagable {
 
 		// Create health bar
 
-		var healthBarPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Monsters/Health.prefab", typeof(GameObject));
+		var healthBarPrefab = Resources.Load(
+			"Monsters/Health", typeof(GameObject));
 		var healthBar = Instantiate(healthBarPrefab,transform.position, Quaternion.identity) as GameObject;
 		healthBar.transform.parent = transform;
 	}

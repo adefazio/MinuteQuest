@@ -28,21 +28,21 @@ public class MonsterGenerator : MonoBehaviour {
 		rnd = new System.Random();
 		spawnedMonstersInSegment = new Dictionary<int, bool>();
 
-		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Monsters/GreenBlob.prefab", typeof(GameObject)));
+		monstersPrefabs.Add(Resources.Load(
+			"Monsters/GreenBlob", typeof(GameObject)));
 		monsterSpawnRatios.Add(10);
 
-		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Monsters/BlueBlob.prefab", typeof(GameObject)));
+		monstersPrefabs.Add(Resources.Load(
+			"Monsters/BlueBlob", typeof(GameObject)));
 		monsterSpawnRatios.Add(3);
-		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Monsters/YellowBlob.prefab", typeof(GameObject)));
+		monstersPrefabs.Add(Resources.Load(
+			"Monsters/YellowBlob", typeof(GameObject)));
 		monsterSpawnRatios.Add(3);
-		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Monsters/RedBlob.prefab", typeof(GameObject)));
+		monstersPrefabs.Add(Resources.Load(
+			"Monsters/RedBlob", typeof(GameObject)));
 		monsterSpawnRatios.Add(4);
-		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Monsters/PurpleBlob.prefab", typeof(GameObject)));
+		monstersPrefabs.Add(Resources.Load(
+			"Monsters/PurpleBlob", typeof(GameObject)));
 		monsterSpawnRatios.Add(2);
 
 		samplingDistrubtion = new LoadedDie(monsterSpawnRatios);

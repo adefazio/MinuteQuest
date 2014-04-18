@@ -102,8 +102,7 @@ public class Attributes : Damagable {
 		health = maxHealth;
 		mana = maxMana;
 
-		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Text/LevelUpMessage.prefab", typeof(GameObject));
+		var prefab = Resources.Load("Text/LevelUpMessage", typeof(GameObject));
 		
 		Instantiate(prefab, transform.position, Quaternion.identity);
 

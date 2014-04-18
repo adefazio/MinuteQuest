@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27596cc395baf648854ebd28a942eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
   worthXP: 50
   level: 1
   physicalScaling: 1

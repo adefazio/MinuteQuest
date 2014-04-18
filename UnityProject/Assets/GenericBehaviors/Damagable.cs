@@ -7,8 +7,7 @@ abstract public class Damagable : MonoBehaviour, IDamagable {
 	abstract public int health { get; set;}
 
 	public void takeDamage(int damage) {
-		var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/Text/HealthLost.prefab", typeof(GameObject));
+		var prefab = Resources.Load("Text/HealthLost", typeof(GameObject));
 
 		var hlpoint = renderer.bounds.center;
 		hlpoint.y = renderer.bounds.max.y + 0.3f;

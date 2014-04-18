@@ -12,10 +12,8 @@ public class OrbScript : MonoBehaviour {
 	private Object gainTextPrefab;
 
 	private static int attrPerLevel = 20;
-	private static Object healthOrbPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-		"Assets/Items/HealthOrb.prefab", typeof(GameObject));
-	private static Object manaOrbPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-		"Assets/Items/manaOrb.prefab", typeof(GameObject));
+	private static Object healthOrbPrefab = Resources.Load("Items/HealthOrb", typeof(GameObject));
+	private static Object manaOrbPrefab = Resources.Load("Items/manaOrb", typeof(GameObject));
 
 	public static void spawnRandomOrb(Vector3 pos, int level) {
 		var orb = Instantiate (Random.value < 0.5 ? healthOrbPrefab : manaOrbPrefab,
@@ -28,10 +26,9 @@ public class OrbScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		var asset = orbType == OrbType.Health ? 
-			"Assets/Text/HealthGained.prefab" : "Assets/Text/ManaGained.prefab";
+			"Text/HealthGained.prefab" : "Text/ManaGained";
 
-		gainTextPrefab =  UnityEditor.AssetDatabase.LoadAssetAtPath(
-			asset, typeof(GameObject));
+		gainTextPrefab =  Resources.Load(asset, typeof(GameObject));
 	}
 	
 	// Update is called once per frame

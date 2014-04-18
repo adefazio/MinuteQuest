@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ItemSpawner : MonoBehaviour {
 
-	//GameObject gemPrefab = (GameObject) UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Items/Gem.prefab", typeof(GameObject));
+	//GameObject gemPrefab = (GameObject) Resources.Load("Items/Gem", typeof(GameObject));
 
 	public GameObject gem;
 	[HideInInspector]

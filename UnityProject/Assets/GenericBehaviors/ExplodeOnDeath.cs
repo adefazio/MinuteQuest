@@ -9,8 +9,7 @@ public class ExplodeOnDeath : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		fireballPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/ParticleEffects/Fireball.prefab", typeof(GameObject));
+		fireballPrefab = Resources.Load("ParticleEffects/Fireball", typeof(GameObject));
 
 		attrs = GetComponent<MonsterAttributes>();
 		attrs.deathOccured += new MonsterAttributes.DeathEventHandler(OnDeath);

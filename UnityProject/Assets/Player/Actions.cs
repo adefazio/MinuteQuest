@@ -39,8 +39,7 @@ public class Actions : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindObjectOfType<Camera>();
-		fireballPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(
-			"Assets/ParticleEffects/Fireball.prefab", typeof(GameObject));
+		fireballPrefab = Resources.Load("ParticleEffects/Fireball", typeof(GameObject));
 		attrs = GetComponent<Attributes>();
 	}
 	
