@@ -9,7 +9,8 @@ public class GUILayout : MonoBehaviour {
 	private int selectedWeapon = 0;
 	private int selectedSpell = 0;
 
-	GUIStyle bigTextFont;
+	public GUIStyle buttonStyle;
+	GUIStyle timerStyle;
 	GUIStyle smallTextFont;
 	GUIStyle smallestTextFont;
 	private Color xpBarColor;
@@ -21,6 +22,7 @@ public class GUILayout : MonoBehaviour {
 	public Texture2D failureTexture;
 	public Texture2D deathSplashTexture;
 	private Texture2D alpha0;
+	public Texture2D square;
 
 	private string[] weaponNames = {"Saber", "Ray Gun"};
 	private string[] spellNames = {"Fireball", "Disguise"};
@@ -60,17 +62,20 @@ public class GUILayout : MonoBehaviour {
 	}
 
 	void setupFonts() {
-		bigTextFont = new GUIStyle(GUI.skin.button);
-		bigTextFont.fontSize = 90;
-		bigTextFont.alignment = TextAnchor.MiddleCenter;
-		bigTextFont.normal.textColor = Color.white;
-
-		smallTextFont = new GUIStyle(bigTextFont);
+		smallTextFont = new GUIStyle(GUI.skin.box);
 		smallTextFont.fontSize = 30;
+		smallTextFont.alignment = TextAnchor.MiddleCenter;
 		smallTextFont.normal.background = alpha0;
+		smallTextFont.normal.textColor = Color.white;
 
 		smallestTextFont = new GUIStyle(smallTextFont);
 		smallestTextFont.fontSize = 24;
+
+		timerStyle = new GUIStyle(GUI.skin.box);
+		timerStyle.fontSize = 90;
+		timerStyle.alignment = TextAnchor.MiddleCenter;
+		timerStyle.normal.textColor = Color.white;
+
 	}
 
 	void showGUI ()
@@ -95,7 +100,7 @@ public class GUILayout : MonoBehaviour {
 		/// Timer
 		var ts = System.TimeSpan.FromSeconds(levelTime - Time.time + startTime);
 		var timeStr = string.Format("{0}:{1,2:D2}", ts.Minutes, ts.Seconds);
-		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, bigTextFont);
+		GUI.Box(new Rect(halfW-156, 0, 312, 127), timeStr, timerStyle);
 
 
 		// Bottom bar group
@@ -159,7 +164,7 @@ public class GUILayout : MonoBehaviour {
 		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "");
 		
 		selectedWeapon = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, buttonHeight), 
-		                                   selectedWeapon, weaponNames, 2, bigTextFont);
+		                                   selectedWeapon, weaponNames, 2, buttonStyle);
 		GUI.EndGroup();
 
 		/////////////////
@@ -169,7 +174,7 @@ public class GUILayout : MonoBehaviour {
 		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "");
 		
 		selectedSpell = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, buttonHeight), 
-		                                  selectedSpell, spellNames, 2, bigTextFont);
+		                                  selectedSpell, spellNames, 2, buttonStyle);
 		GUI.EndGroup();
 
 		GUI.EndGroup();

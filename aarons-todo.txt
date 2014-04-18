@@ -2,6 +2,6 @@
  - Add cloak.
  - Add ray gun and shooting
  - Add GUI Skin
- - Add health bars above monsters
 
  - Implement some sort of boss.
+ 94, 94, 174

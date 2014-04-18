@@ -770,9 +770,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37986cae73a2a44a0911435b8c0eb215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonStyle:
+    m_Name: Button Style
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 39781468afa8167409c768cba57df6da, type: 3}
+      m_TextColor: {r: .75, g: .75, b: .75, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+      m_TextColor: {r: .745098054, g: .745098054, b: .745098054, a: 1}
+    m_Focused:
+      m_Background: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+      m_TextColor: {r: .745098054, g: .745098054, b: .745098054, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   introSplashTexture: {fileID: 2800000, guid: 278c351754f3981449442fc632177ef0, type: 3}
   failureTexture: {fileID: 2800000, guid: 175eba88acd71cd43b5f1eb8daa308a7, type: 3}
   deathSplashTexture: {fileID: 2800000, guid: b82f76f06c613404db24e60b1cd3e5d1, type: 3}
+  square: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
 --- !u!1001 &950127603
 Prefab:
   m_ObjectHideFlags: 0
@@ -1179,6 +1239,86 @@ Prefab:
       propertyPath: deathSplashTexture
       value: 
       objectReference: {fileID: 2800000, guid: b82f76f06c613404db24e60b1cd3e5d1, type: 3}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: square
+      value: 
+      objectReference: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Name
+      value: Button Style
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Normal.m_Background
+      value: 
+      objectReference: {fileID: 2800000, guid: 39781468afa8167409c768cba57df6da, type: 3}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Normal.m_TextColor.r
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Normal.m_TextColor.g
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Normal.m_TextColor.b
+      value: .75
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Active.m_Background
+      value: 
+      objectReference: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Active.m_TextColor.r
+      value: .745098054
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Active.m_TextColor.g
+      value: .745098054
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Active.m_TextColor.b
+      value: .745098054
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Focused.m_Background
+      value: 
+      objectReference: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Focused.m_TextColor.r
+      value: .745098054
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Focused.m_TextColor.g
+      value: .745098054
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_Focused.m_TextColor.b
+      value: .745098054
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_OnNormal.m_Background
+      value: 
+      objectReference: {fileID: 2800000, guid: c6da3965c601c154ca282e01aa4abb22, type: 3}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_OnNormal.m_TextColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_OnNormal.m_TextColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 06537624e8861794f84062ec8204696e, type: 2}
+      propertyPath: buttonStyle.m_OnNormal.m_TextColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06537624e8861794f84062ec8204696e, type: 2}
   m_RootGameObject: {fileID: 737060754}
