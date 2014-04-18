@@ -6,6 +6,7 @@ public class GUILayout : MonoBehaviour {
 	private GameObject player;
 
 	private GUIStyle whiteStyle;
+	private GUIStyle blankStyle;
 	private int selectedWeapon = 0;
 	private int selectedSpell = 0;
 
@@ -24,8 +25,11 @@ public class GUILayout : MonoBehaviour {
 	private Texture2D alpha0;
 	public Texture2D square;
 
-	private string[] weaponNames = {"Saber", "Ray Gun"};
-	private string[] spellNames = {"Fireball", "Disguise"};
+	public Texture2D fireballIcon;
+	public Texture2D SwordIcon;
+
+	private GUIContent[] weaponIcons;
+	private GUIContent[] spellIcons;
 
 	private int halfW = 1920/2;
 	//private int halfH = 1080/2;
@@ -59,6 +63,9 @@ public class GUILayout : MonoBehaviour {
 
 		xpBarColor = Color.green;
 		xpBarColor.a = 0.3f;
+
+		spellIcons = new GUIContent[] {new GUIContent(fireballIcon), new GUIContent("Disguise")};
+		weaponIcons = new GUIContent[] {new GUIContent(SwordIcon), new GUIContent("Gun")};
 	}
 
 	void setupFonts() {
@@ -75,6 +82,8 @@ public class GUILayout : MonoBehaviour {
 		timerStyle.fontSize = 90;
 		timerStyle.alignment = TextAnchor.MiddleCenter;
 		timerStyle.normal.textColor = Color.white;
+
+		blankStyle = new GUIStyle();
 
 	}
 
@@ -161,20 +170,20 @@ public class GUILayout : MonoBehaviour {
 		/// Select weapon
 		var areaWidth = halfW-100;
 		GUI.BeginGroup(new Rect(20, 0, areaWidth, 300));
-		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "");
+		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "", blankStyle);
 		
 		selectedWeapon = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, buttonHeight), 
-		                                   selectedWeapon, weaponNames, 2, buttonStyle);
+		                                   selectedWeapon, weaponIcons, 2, buttonStyle);
 		GUI.EndGroup();
 
 		/////////////////
 		/// Select spell
 
 		GUI.BeginGroup(new Rect(halfW + 60, 0, areaWidth, 300));
-		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "");
+		GUI.Box(new Rect(20, 20, areaWidth-20, buttonHeight), "", blankStyle);
 		
 		selectedSpell = GUI.SelectionGrid(new Rect (20, 20, areaWidth-20, buttonHeight), 
-		                                  selectedSpell, spellNames, 2, buttonStyle);
+		                                  selectedSpell, spellIcons, 2, buttonStyle);
 		GUI.EndGroup();
 
 		GUI.EndGroup();

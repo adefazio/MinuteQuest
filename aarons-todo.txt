@@ -1,7 +1,5 @@
 
  - Add cloak.
  - Add ray gun and shooting
- - Add GUI Skin
 
  - Implement some sort of boss.
- 94, 94, 174
