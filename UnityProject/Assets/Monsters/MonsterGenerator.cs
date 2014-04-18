@@ -16,8 +16,10 @@ public class MonsterGenerator : MonoBehaviour {
 	private float gangRadius = 2.0f;
 
 	private List<Object> monstersPrefabs = new List<Object>();
+	private List<int> monsterSpawnRatios = new List<int>();
 
 	private Attributes attrs;
+	private LoadedDie samplingDistrubtion;
 
 	// Use this for initialization
 	void Start () {
@@ -28,8 +30,22 @@ public class MonsterGenerator : MonoBehaviour {
 
 		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
 			"Assets/Monsters/GreenBlob.prefab", typeof(GameObject)));
+		monsterSpawnRatios.Add(10);
+
 		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
 			"Assets/Monsters/BlueBlob.prefab", typeof(GameObject)));
+		monsterSpawnRatios.Add(3);
+		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/Monsters/YellowBlob.prefab", typeof(GameObject)));
+		monsterSpawnRatios.Add(3);
+		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/Monsters/RedBlob.prefab", typeof(GameObject)));
+		monsterSpawnRatios.Add(4);
+		monstersPrefabs.Add(UnityEditor.AssetDatabase.LoadAssetAtPath(
+			"Assets/Monsters/PurpleBlob.prefab", typeof(GameObject)));
+		monsterSpawnRatios.Add(2);
+
+		samplingDistrubtion = new LoadedDie(monsterSpawnRatios);
 	}
 
 	private int segment(Vector2 v) {
@@ -67,7 +83,7 @@ public class MonsterGenerator : MonoBehaviour {
 
 			for(int monster=0; monster < nmonsters; monster++) {
 				var monsterPos = nextFloat(gangPos-gangRadius, gangPos+gangRadius);
-				var monsterPrefab = monstersPrefabs[rnd.Next(monstersPrefabs.Count)];
+				var monsterPrefab = monstersPrefabs[samplingDistrubtion.NextValue()];
 
 				var mobj = Instantiate(monsterPrefab, new Vector3(monsterPos, 0.0f, 0.0f), 
 				                       Quaternion.identity) as GameObject;
