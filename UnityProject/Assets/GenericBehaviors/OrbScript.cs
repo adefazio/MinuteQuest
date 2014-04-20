@@ -28,7 +28,7 @@ public class OrbScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		var asset = orbType == OrbType.Health ? 
-			"Text/HealthGained.prefab" : "Text/ManaGained";
+			"Text/HealthGained" : "Text/ManaGained";
 
 		gainTextPrefab =  Resources.Load(asset, typeof(GameObject));
 	}
@@ -36,6 +36,7 @@ public class OrbScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if((transform.position - player.position).magnitude < orbPickupRange) {
+			Debug.Log ("Player in range of orb");
 			var attrs = player.GetComponent<Attributes>();
 			if(orbType == OrbType.Health) {
 				attrs.health += attributeIncrease;

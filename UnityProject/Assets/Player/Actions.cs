@@ -125,15 +125,15 @@ public class Actions : MonoBehaviour {
 		}
 
 		if(attackingMonster) {
-			Debug.Log ("Monster");
+			Debug.Log ("Attacking monster");
 			Debug.Log (monsterTarget);
 			Vector3 monsterpoint = monsterTarget.transform.position;
 			var directionToPlayer = Mathf.Sign (transform.position.x - monsterpoint.x);
-			Debug.Log("direction to Player: " + directionToPlayer);
-			Debug.Log("playerMovementTarget: " + playerMovementTarget);
+			//Debug.Log("direction to Player: " + directionToPlayer);
+			//Debug.Log("playerMovementTarget: " + playerMovementTarget);
 			playerMovementTarget = monsterpoint.x + directionToPlayer*howCloseToMonsterToMove;
-			Debug.Log("player location: " + transform.position.x);
-			Debug.Log ("monsterpoint: " + monsterpoint.x);
+			//Debug.Log("player location: " + transform.position.x);
+			//Debug.Log ("monsterpoint: " + monsterpoint.x);
 		}
 
 		if(movingToClick || attackingMonster) {

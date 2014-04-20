@@ -11,7 +11,7 @@ public class FireballScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Fireball firing!");
+		//Debug.Log ("Fireball firing!");
 
 		int mask = 0;
 		mask |= (1 << LayerMask.NameToLayer("Player"));
@@ -23,12 +23,12 @@ public class FireballScript : MonoBehaviour {
 		                                          layerMask: mask);
 
 		foreach(Collider2D hit in stuffHit) {
-			Debug.Log ("Hit with fireball: " + hit);
+			//Debug.Log ("Hit with fireball: " + hit);
 			var hitGO = hit.gameObject;
 			foreach (Component comp in hitGO.GetComponents<Component>()){
-				Debug.Log ("Got Comp: " + comp);
+				//Debug.Log ("Got Comp: " + comp);
 				if (comp is IDamagable) {
-					Debug.Log("Damagable");
+					//Debug.Log("Damagable");
 					((IDamagable)comp).takeDamage(calcDamage());
 				}
 			}

@@ -39,7 +39,7 @@ public class MonsterAttributes : Damagable {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Monster start, lvl: " + level);
+		//Debug.Log ("Monster start, lvl: " + level);
 
 		// Make things more random
 		speedScaling *= nextFloat(0.8f, 1.2f);
