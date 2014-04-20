@@ -30,16 +30,16 @@ public class BlobController2 : MonoBehaviour {
     }
 
 	void Update() {
-		float dx = transform.position.x - player.position.x;
+		var dx = transform.position - player.position;
 
 
-		if (Mathf.Abs(dx) < attackAnimDist && !pattrs.isDisguised) {
+		if (dx.magnitude < attackAnimDist && !pattrs.isDisguised) {
 			anim.SetBool ("attacking",true);
 		}
 		else {
 			anim.SetBool ("attacking", false);
 
-			float direction = (dx > 0 ? 1.0f : -1.0f);
+			float direction = (dx.x > 0 ? 1.0f : -1.0f);
 
 			if(pattrs.isDisguised) {
 				direction = randomDirection;
